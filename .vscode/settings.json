@@ -51,5 +51,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "3DUI-MemoryMatch.sln"
+    "dotnet.defaultSolution": "MemoryMatch_FinalProject.sln"
 }
