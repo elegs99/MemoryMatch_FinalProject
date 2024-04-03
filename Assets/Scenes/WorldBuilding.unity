@@ -356,7 +356,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
-  m_LocalScale: {x: 0.1, y: 1, z: 0.1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 193409888}
@@ -455,7 +455,7 @@ MonoBehaviour:
     - {fileID: 2549054593802932585, guid: bee651b89d6b3ef48b19cfe8a4c9fa42, type: 3}
     - {fileID: 6739804228592001243, guid: 6cdd667aa0034cd4dadc8d58a65fb098, type: 3}
     - {fileID: 5984911598340929997, guid: 5228c984e5be7284d8d83c18096254dd, type: 3}
-    - {fileID: 4928616408704863665, guid: 1caa73a6296593c46bb83d678ff6609b, type: 3}
+    - {fileID: 8277376828984627089, guid: b1251525c2a7a194bbcebc4e2fd72c1a, type: 3}
     - {fileID: 6117071349010126079, guid: d250af4848f51154f9a2bf6a85b60ac2, type: 3}
     - {fileID: 7098389285256826050, guid: fb070a2d31206d9499ecc8a77be0ebf0, type: 3}
   selectedBiome: 2
@@ -463,7 +463,7 @@ MonoBehaviour:
   desertTexture: {fileID: 2800000, guid: 16fdc16af892fc745890a4d5720a58dd, type: 3}
   forestTexture: {fileID: 2800000, guid: 7bd486cf36b61954d9012c6704ab80a4, type: 3}
   terrainScale: 10
-  heightMultiplier: 0.27
+  heightMultiplier: 3
   edgeBoundary: 1.91
 --- !u!1 &542527081
 GameObject:
@@ -495,7 +495,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: 0, y: -0.5, z: 0}
-  m_LocalScale: {x: 0.1, y: 1, z: 0.1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 193409888}
@@ -594,15 +594,15 @@ MonoBehaviour:
     - {fileID: 2549054593802932585, guid: bee651b89d6b3ef48b19cfe8a4c9fa42, type: 3}
     - {fileID: 6739804228592001243, guid: 6cdd667aa0034cd4dadc8d58a65fb098, type: 3}
     - {fileID: 5984911598340929997, guid: 5228c984e5be7284d8d83c18096254dd, type: 3}
-    - {fileID: 4928616408704863665, guid: 1caa73a6296593c46bb83d678ff6609b, type: 3}
+    - {fileID: 8277376828984627089, guid: b1251525c2a7a194bbcebc4e2fd72c1a, type: 3}
     - {fileID: 6117071349010126079, guid: d250af4848f51154f9a2bf6a85b60ac2, type: 3}
     - {fileID: 7098389285256826050, guid: fb070a2d31206d9499ecc8a77be0ebf0, type: 3}
-  selectedBiome: 0
+  selectedBiome: 2
   beachTexture: {fileID: 2800000, guid: 85ed2b41abc7c82499e10ac4feaa0590, type: 3}
   desertTexture: {fileID: 2800000, guid: 16fdc16af892fc745890a4d5720a58dd, type: 3}
   forestTexture: {fileID: 2800000, guid: 7bd486cf36b61954d9012c6704ab80a4, type: 3}
   terrainScale: 10
-  heightMultiplier: 0.27
+  heightMultiplier: 3
   edgeBoundary: 1.91
 --- !u!1 &664969782
 GameObject:
@@ -728,7 +728,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0.5, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 1, z: 0.1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 193409888}
@@ -827,7 +827,7 @@ MonoBehaviour:
     - {fileID: 2549054593802932585, guid: bee651b89d6b3ef48b19cfe8a4c9fa42, type: 3}
     - {fileID: 6739804228592001243, guid: 6cdd667aa0034cd4dadc8d58a65fb098, type: 3}
     - {fileID: 5984911598340929997, guid: 5228c984e5be7284d8d83c18096254dd, type: 3}
-    - {fileID: 4928616408704863665, guid: 1caa73a6296593c46bb83d678ff6609b, type: 3}
+    - {fileID: 8277376828984627089, guid: b1251525c2a7a194bbcebc4e2fd72c1a, type: 3}
     - {fileID: 6117071349010126079, guid: d250af4848f51154f9a2bf6a85b60ac2, type: 3}
     - {fileID: 7098389285256826050, guid: fb070a2d31206d9499ecc8a77be0ebf0, type: 3}
   selectedBiome: 2
@@ -835,7 +835,7 @@ MonoBehaviour:
   desertTexture: {fileID: 2800000, guid: 16fdc16af892fc745890a4d5720a58dd, type: 3}
   forestTexture: {fileID: 2800000, guid: 7bd486cf36b61954d9012c6704ab80a4, type: 3}
   terrainScale: 10
-  heightMultiplier: 0.27
+  heightMultiplier: 3
   edgeBoundary: 1.91
 --- !u!1 &1408542489
 GameObject:
@@ -867,7 +867,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: -0.5, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 1, z: 0.1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 193409888}
@@ -966,15 +966,15 @@ MonoBehaviour:
     - {fileID: 2549054593802932585, guid: bee651b89d6b3ef48b19cfe8a4c9fa42, type: 3}
     - {fileID: 6739804228592001243, guid: 6cdd667aa0034cd4dadc8d58a65fb098, type: 3}
     - {fileID: 5984911598340929997, guid: 5228c984e5be7284d8d83c18096254dd, type: 3}
-    - {fileID: 4928616408704863665, guid: 1caa73a6296593c46bb83d678ff6609b, type: 3}
+    - {fileID: 8277376828984627089, guid: b1251525c2a7a194bbcebc4e2fd72c1a, type: 3}
     - {fileID: 6117071349010126079, guid: d250af4848f51154f9a2bf6a85b60ac2, type: 3}
     - {fileID: 7098389285256826050, guid: fb070a2d31206d9499ecc8a77be0ebf0, type: 3}
-  selectedBiome: 0
+  selectedBiome: 2
   beachTexture: {fileID: 2800000, guid: 85ed2b41abc7c82499e10ac4feaa0590, type: 3}
   desertTexture: {fileID: 2800000, guid: 16fdc16af892fc745890a4d5720a58dd, type: 3}
   forestTexture: {fileID: 2800000, guid: 7bd486cf36b61954d9012c6704ab80a4, type: 3}
   terrainScale: 10
-  heightMultiplier: 0.27
+  heightMultiplier: 3
   edgeBoundary: 1.91
 --- !u!1 &1449977810
 GameObject:
@@ -1006,7 +1006,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: -0.5}
-  m_LocalScale: {x: 0.1, y: 1, z: 0.1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 193409888}
@@ -1105,7 +1105,7 @@ MonoBehaviour:
     - {fileID: 2549054593802932585, guid: bee651b89d6b3ef48b19cfe8a4c9fa42, type: 3}
     - {fileID: 6739804228592001243, guid: 6cdd667aa0034cd4dadc8d58a65fb098, type: 3}
     - {fileID: 5984911598340929997, guid: 5228c984e5be7284d8d83c18096254dd, type: 3}
-    - {fileID: 4928616408704863665, guid: 1caa73a6296593c46bb83d678ff6609b, type: 3}
+    - {fileID: 8277376828984627089, guid: b1251525c2a7a194bbcebc4e2fd72c1a, type: 3}
     - {fileID: 6117071349010126079, guid: d250af4848f51154f9a2bf6a85b60ac2, type: 3}
     - {fileID: 7098389285256826050, guid: fb070a2d31206d9499ecc8a77be0ebf0, type: 3}
   selectedBiome: 2
@@ -1113,7 +1113,7 @@ MonoBehaviour:
   desertTexture: {fileID: 2800000, guid: 16fdc16af892fc745890a4d5720a58dd, type: 3}
   forestTexture: {fileID: 2800000, guid: 7bd486cf36b61954d9012c6704ab80a4, type: 3}
   terrainScale: 10
-  heightMultiplier: 0.27
+  heightMultiplier: 3
   edgeBoundary: 1.91
 --- !u!1 &1682122197
 GameObject:
@@ -1145,7 +1145,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0.5}
-  m_LocalScale: {x: 0.1, y: 1, z: 0.1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 193409888}
@@ -1244,15 +1244,15 @@ MonoBehaviour:
     - {fileID: 2549054593802932585, guid: bee651b89d6b3ef48b19cfe8a4c9fa42, type: 3}
     - {fileID: 6739804228592001243, guid: 6cdd667aa0034cd4dadc8d58a65fb098, type: 3}
     - {fileID: 5984911598340929997, guid: 5228c984e5be7284d8d83c18096254dd, type: 3}
-    - {fileID: 4928616408704863665, guid: 1caa73a6296593c46bb83d678ff6609b, type: 3}
+    - {fileID: 8277376828984627089, guid: b1251525c2a7a194bbcebc4e2fd72c1a, type: 3}
     - {fileID: 6117071349010126079, guid: d250af4848f51154f9a2bf6a85b60ac2, type: 3}
     - {fileID: 7098389285256826050, guid: fb070a2d31206d9499ecc8a77be0ebf0, type: 3}
-  selectedBiome: 1
+  selectedBiome: 2
   beachTexture: {fileID: 2800000, guid: 85ed2b41abc7c82499e10ac4feaa0590, type: 3}
   desertTexture: {fileID: 2800000, guid: 16fdc16af892fc745890a4d5720a58dd, type: 3}
   forestTexture: {fileID: 2800000, guid: 7bd486cf36b61954d9012c6704ab80a4, type: 3}
   terrainScale: 10
-  heightMultiplier: 0.27
+  heightMultiplier: 3
   edgeBoundary: 1.91
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

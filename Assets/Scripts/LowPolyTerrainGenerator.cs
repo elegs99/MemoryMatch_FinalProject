@@ -104,6 +104,15 @@ public class LowPolyTerrainGenerator : MonoBehaviour
 
         mesh.vertices = vertices;
         mesh.RecalculateNormals();
+        mesh.RecalculateBounds();
+
+        // Update the MeshCollider with the new mesh
+        MeshCollider meshCollider = GetComponent<MeshCollider>();
+        if (meshCollider != null)
+        {
+            meshCollider.sharedMesh = null; // Force refresh
+            meshCollider.sharedMesh = mesh;
+        }
     }
 
     private void PlaceBiomeAssets()
@@ -111,36 +120,26 @@ public class LowPolyTerrainGenerator : MonoBehaviour
         BiomePrefabs selectedBiomePrefabs = GetSelectedBiomePrefabs();
         Transform terrainTransform = this.transform;
 
-        for (int i = 0; i < Mathf.Min(selectedBiomePrefabs.assets.Count, assetCount); i++)
+        for (int i = 0; i < assetCount; i++)
         {
             bool placed = false;
             while (!placed)
             {
-                int gridX = Random.Range(0, 10);
-                int gridZ = Random.Range(0, 10);
+                int gridX = Random.Range(2, 10);
+                int gridZ = Random.Range(2, 10);
 
                 if (!gridOccupied[gridX, gridZ])
                 {
                     gridOccupied[gridX, gridZ] = true;
                     Vector3 localPos = new Vector3(
-                        (gridX - 4.5f) * planeSize / 4.5f,
+                        (gridX - 5) * planeSize / 5,
                         0,
-                        (gridZ - 4.5f) * planeSize / 4.5f
+                        (gridZ - 5) * planeSize / 5
                     );
-                    Vector3 worldPos = terrainTransform.TransformPoint(localPos) + planeNormal * 50f;
-                    Quaternion rotation = Quaternion.FromToRotation(Vector3.up, planeNormal);
-
-                    RaycastHit hit;
-                    if (Physics.Raycast(worldPos, -planeNormal, out hit, Mathf.Infinity))
+                    Vector3 worldPos = terrainTransform.TransformPoint(localPos) + planeNormal * 5;
+                    if (Physics.Raycast(worldPos, -planeNormal * 10, out RaycastHit hit, 10))
                     {
-                        GameObject asset = Instantiate(selectedBiomePrefabs.assets[i], hit.point, rotation, terrainTransform);
-                        asset.transform.localScale = new Vector3(
-                            1 / terrainTransform.localScale.x * .2f,
-                            1 / terrainTransform.localScale.y * .2f,
-                            1 / terrainTransform.localScale.z * .2f
-                        );
-
-                        AdjustHeightToTerrain(asset, planeNormal);
+                        GameObject asset = Instantiate(selectedBiomePrefabs.assets[Random.Range(0, selectedBiomePrefabs.assets.Count)], hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal), terrainTransform);
                         placed = true;
                     }
                 }
@@ -153,7 +152,7 @@ public class LowPolyTerrainGenerator : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(asset.transform.position + planeNormal * 50, -planeNormal, out hit, Mathf.Infinity))
         {
-            float pivotOffset = 0.6f; 
+            float pivotOffset = 0.1f; 
             asset.transform.position = hit.point + planeNormal * pivotOffset;
         }
     }
