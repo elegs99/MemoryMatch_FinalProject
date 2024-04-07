@@ -4,6 +4,8 @@ using UnityEngine.UIElements;
 
 public class LowPolyTerrainGenerator : MonoBehaviour
 {
+    public WorldManager worldManager;
+
     [System.Serializable]
     public class BiomePrefabs
     {
@@ -15,6 +17,7 @@ public class LowPolyTerrainGenerator : MonoBehaviour
     public BiomePrefabs beachPrefabs;
     public BiomePrefabs desertPrefabs;
     public BiomePrefabs forestPrefabs;
+    public List<GameObject> placedObjects = new List<GameObject>();
 
     public enum BiomeType
     {
@@ -37,7 +40,8 @@ public class LowPolyTerrainGenerator : MonoBehaviour
     private Vector3 planeNormal;
     private float planeSize;
 
-    private void Start()
+
+    public void GenerateWorld()
     {
         ApplyBiomeTexture();
         GenerateHeight();
@@ -141,19 +145,10 @@ public class LowPolyTerrainGenerator : MonoBehaviour
                     {
                         GameObject asset = Instantiate(selectedBiomePrefabs.assets[Random.Range(0, selectedBiomePrefabs.assets.Count)], hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal), terrainTransform);
                         placed = true;
+                        placedObjects.Add(asset);
                     }
                 }
             }
-        }
-    }
-
-    private void AdjustHeightToTerrain(GameObject asset, Vector3 planeNormal)
-    {
-        RaycastHit hit;
-        if (Physics.Raycast(asset.transform.position + planeNormal * 50, -planeNormal, out hit, Mathf.Infinity))
-        {
-            float pivotOffset = 0.1f; 
-            asset.transform.position = hit.point + planeNormal * pivotOffset;
         }
     }
 
@@ -170,5 +165,69 @@ public class LowPolyTerrainGenerator : MonoBehaviour
             default:
                 return null;
         }
+    }
+
+    public void ChangeBiomeAssets()
+    {
+        /* Coin flip to decide if we're changing assets on this plane, if we decide no but there aren't
+         * any assets changed yet we'll override this to make sure there's at least one asset changed always */
+        if(Random.Range(0, 1) == 0 && worldManager.GetChangedObjectCount() >= 1)
+        {
+            return;
+        }
+
+        GameObject randomObject = placedObjects[Random.Range(0, placedObjects.Count)];
+        GameObject changedObject;
+        int assetChangeType = Random.Range(0, 3);
+
+        Transform terrainTransform = this.transform;
+        Vector3 localPos;
+        Vector3 worldPos;
+        switch (assetChangeType)
+        {
+            case 0: // SCALE
+                changedObject = Instantiate(randomObject, randomObject.transform.position, randomObject.transform.rotation, randomObject.transform.parent);
+                float scale = Random.Range(0.5f, 2.0f);
+                changedObject.transform.localScale = new Vector3(scale, scale, scale);
+
+                localPos = changedObject.transform.position;
+                worldPos = terrainTransform.TransformPoint(localPos) + planeNormal * 5;
+
+                if (Physics.Raycast(worldPos, -planeNormal * 10, out RaycastHit hit, 10))
+                {
+                    changedObject.transform.position = hit.point;
+                    changedObject.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
+                }
+
+                worldManager.AddChangedObject(changedObject);
+                changedObject.name = "CHANGEDSCALE" + randomObject.name;
+                break;
+            case 1: // COLOR
+                changedObject = Instantiate(randomObject, randomObject.transform.position, randomObject.transform.rotation, randomObject.transform.parent);
+
+                Material material = changedObject.GetComponent<MeshRenderer>().material;
+                material.color = new Color(
+                    material.color.r + Random.Range(-0.1f, 0.1f),
+                    material.color.g + Random.Range(-0.1f, 0.1f),
+                    material.color.b + Random.Range(-0.1f, 0.1f)
+                );
+                changedObject.name = "CHANGEDCOLOR" + randomObject.name;
+
+                break;
+            case 2: // ENTIRE OBJECT
+                changedObject = Instantiate(GetSelectedBiomePrefabs().assets[Random.Range(0, GetSelectedBiomePrefabs().assets.Count)], randomObject.transform.position, randomObject.transform.rotation, randomObject.transform.parent);
+                changedObject.name = "CHANGEDOBJECT" + randomObject.name;
+                localPos = changedObject.transform.position;
+                worldPos = terrainTransform.TransformPoint(localPos) + planeNormal * 5;
+                if (Physics.Raycast(worldPos, -planeNormal * 10, out RaycastHit hit2, 10))
+                {
+                    changedObject.transform.position = hit2.point;
+                    changedObject.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit2.normal);
+                }
+
+                break;
+        }
+
+        Destroy(randomObject);
     }
 }
