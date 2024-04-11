@@ -8,7 +8,7 @@ public class GodMovement : MonoBehaviour
     public GameObject rightHand, leftHand;
     public InputActionReference rightHandGrab, leftHandGrab;
     public float scalingFactor = .1f;
-    GameObject parentEnvironment;
+    public GameObject parentEnvironment;
     bool rightHandClosed, leftHandClosed;
     Vector3 currentRightHandPosition, currentLeftHandPosition, lastRightHandPosition, lastLeftHandPosition;
     float currentHandsDistance, lastHandsDistance;
@@ -16,7 +16,6 @@ public class GodMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        parentEnvironment = GameObject.Find("TestEnviroment");
         lastRightHandPosition = rightHand.transform.position;
         lastLeftHandPosition = leftHand.transform.position;
         lastHandsDistance = Vector3.Distance(lastRightHandPosition, lastLeftHandPosition);
