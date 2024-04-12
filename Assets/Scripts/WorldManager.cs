@@ -7,6 +7,8 @@ public class WorldManager : MonoBehaviour
 {
     private List<GameObject> changedObjects = new();
     public GameObject world;
+    public ObjectSelection scriptRefSelect;
+    public GodMovement scripRefMovement;
 
     private void Start()
     {
@@ -18,6 +20,8 @@ public class WorldManager : MonoBehaviour
             }
         }
         GameObject dupWorld = Instantiate(world, world.transform.position, world.transform.rotation);
+        scripRefMovement.setCloneWorld(dupWorld);
+
         world.SetActive(false);
 
         foreach (Transform child in dupWorld.transform)
@@ -42,6 +46,7 @@ public class WorldManager : MonoBehaviour
 
     public int GetChangedObjectCount()
     {
+        scriptRefSelect.SetChangedObjectList(changedObjects);
         return changedObjects.Count;
     }
 }

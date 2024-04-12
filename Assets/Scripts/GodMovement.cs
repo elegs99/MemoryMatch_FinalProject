@@ -9,6 +9,7 @@ public class GodMovement : MonoBehaviour
     public InputActionReference rightHandGrab, leftHandGrab;
     public float scalingFactor = .1f;
     public GameObject parentEnvironment;
+    GameObject cloneEnviroment;
     bool rightHandClosed, leftHandClosed;
     Vector3 currentRightHandPosition, currentLeftHandPosition, lastRightHandPosition, lastLeftHandPosition;
     float currentHandsDistance, lastHandsDistance;
@@ -32,7 +33,7 @@ public class GodMovement : MonoBehaviour
         {
             RotateAndScaleEnvironment();
         }
-        else if (rightHandClosed || leftHandClosed)
+        if (rightHandClosed || leftHandClosed)
         {
             TranslateEnvironment();
         } else {
@@ -60,6 +61,7 @@ public class GodMovement : MonoBehaviour
             handMovement = currentLeftHandPosition - lastLeftHandPosition;
         }
         parentEnvironment.transform.position += handMovement;
+        cloneEnviroment.transform.position += handMovement;
     }
 
     void RotateAndScaleEnvironment()
@@ -75,6 +77,7 @@ public class GodMovement : MonoBehaviour
 
         // Apply the new scale
         parentEnvironment.transform.localScale = newScale;
+        cloneEnviroment.transform.localScale = newScale;
 
         Vector3 previousDirection = lastRightHandPosition - lastLeftHandPosition;
         Vector3 currentDirection = currentRightHandPosition - currentLeftHandPosition;
@@ -85,6 +88,9 @@ public class GodMovement : MonoBehaviour
 
         // Apply the rotation around the axis
         parentEnvironment.transform.Rotate(rotationAxis, angle, Space.World);
-    
+        cloneEnviroment.transform.Rotate(rotationAxis, angle, Space.World);
+    }
+    public void setCloneWorld(GameObject clone) {
+        cloneEnviroment = clone;
     }
 }

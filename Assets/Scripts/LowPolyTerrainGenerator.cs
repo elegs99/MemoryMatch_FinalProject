@@ -145,6 +145,7 @@ public class LowPolyTerrainGenerator : MonoBehaviour
                     {
                         GameObject asset = Instantiate(selectedBiomePrefabs.assets[Random.Range(0, selectedBiomePrefabs.assets.Count)], hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal), terrainTransform);
                         placed = true;
+                        asset.gameObject.tag = "prop";
                         placedObjects.Add(asset);
                     }
                 }
