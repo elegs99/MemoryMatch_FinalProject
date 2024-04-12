@@ -32,7 +32,10 @@ public class ObjectSelection : MonoBehaviour
                 float scale = Mathf.Lerp(.02f, .06f, (distance - minDistance) / (maxDistance - minDistance));
                 selectionSphere.transform.localScale = new Vector3(scale, scale, scale);
             }
-            HighlightObjects();
+            HashSet<GameObject> currentObjects = HighlightObjects();
+            foreach (GameObject temp in currentObjects) {
+                Debug.Log(temp);
+            }
         } else {
             if (selectionSphere != null) {
                 selectionSphere.SetActive(false);
@@ -41,7 +44,7 @@ public class ObjectSelection : MonoBehaviour
         }
     }
 
-    private void HighlightObjects() {
+    private HashSet<GameObject> HighlightObjects() {
         Collider[] hitColliders = Physics.OverlapSphere(selectionSphere.transform.position, selectionSphere.transform.localScale.x / 2);
         HashSet<GameObject> currentObjects = new HashSet<GameObject>();
 
@@ -51,8 +54,7 @@ public class ObjectSelection : MonoBehaviour
                 GameObject obj = hitCollider.gameObject;
                 currentObjects.Add(obj); // Store the objects inside of sphere collider
                 if (!originalMaterials.ContainsKey(obj)) {
-                    var meshRenderer = obj.GetComponent<MeshRenderer>();
-                    if (meshRenderer != null) {
+                    if (obj.TryGetComponent<MeshRenderer>(out var meshRenderer)) {
                         originalMaterials[obj] = meshRenderer.material; // Store the original material
                         meshRenderer.material = selectHighlight;
                     } else {
@@ -70,8 +72,7 @@ public class ObjectSelection : MonoBehaviour
         List<GameObject> objectsToRemove = new List<GameObject>();
         foreach (var obj in originalMaterials.Keys) {
             if (!currentObjects.Contains(obj)) {
-                var meshRenderer = obj.GetComponent<MeshRenderer>();
-                if (meshRenderer != null) {
+                if (obj.TryGetComponent<MeshRenderer>(out var meshRenderer)) {
                     meshRenderer.material = originalMaterials[obj]; // Reset to the original material
                 } else {
                     meshRenderer = obj.GetComponentInChildren<MeshRenderer>();
@@ -87,12 +88,12 @@ public class ObjectSelection : MonoBehaviour
         foreach (var obj in objectsToRemove) {
             originalMaterials.Remove(obj);
         }
+        return currentObjects;
     }
 
     private void ResetMaterials() {
         foreach (var obj in originalMaterials.Keys) {
-            var meshRenderer = obj.GetComponent<MeshRenderer>();
-            if (meshRenderer != null) {
+            if (obj.TryGetComponent<MeshRenderer>(out var meshRenderer)) {
                 meshRenderer.material = originalMaterials[obj]; // Reset to the original material
             }
         }
