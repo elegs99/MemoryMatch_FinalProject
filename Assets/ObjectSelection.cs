@@ -20,13 +20,14 @@ public class ObjectSelection : MonoBehaviour
     void Update()
     {
         float triggerValue = triggerVal.action.ReadValue<float>();
+        Debug.Log(triggerValue);
         float distance = Vector3.Distance(rightThumb.position, rightPointer.position);
         Vector3 middlePoint = (rightThumb.position + rightPointer.position) / 2;
         selectionSphere.transform.position = middlePoint;
         float minDistance = .005f;
         float maxDistance = .065f;
 
-        if (distance < maxDistance && triggerValue < .9) {
+        if (distance < maxDistance && triggerValue > .1) {
             if (selectionSphere != null) {
                 selectionSphere.SetActive(true);
                 float scale = Mathf.Lerp(.02f, .06f, (distance - minDistance) / (maxDistance - minDistance));
