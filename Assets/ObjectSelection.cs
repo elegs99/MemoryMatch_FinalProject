@@ -47,14 +47,20 @@ public class ObjectSelection : MonoBehaviour
 
         // Add new objects and change their materials
         foreach (var hitCollider in hitColliders) {
-            if (hitCollider.tag == "prop") {
+            if (hitCollider.tag == "prop") { // Make sure it is a prop
                 GameObject obj = hitCollider.gameObject;
-                currentObjects.Add(obj);
+                currentObjects.Add(obj); // Store the objects inside of sphere collider
                 if (!originalMaterials.ContainsKey(obj)) {
-                    var meshRenderer = hitCollider.GetComponent<MeshRenderer>();
+                    var meshRenderer = obj.GetComponent<MeshRenderer>();
                     if (meshRenderer != null) {
                         originalMaterials[obj] = meshRenderer.material; // Store the original material
                         meshRenderer.material = selectHighlight;
+                    } else {
+                        meshRenderer = obj.GetComponentInChildren<MeshRenderer>();
+                        if (meshRenderer != null) {
+                            originalMaterials[obj] = meshRenderer.material; // Store the original material
+                            meshRenderer.material = selectHighlight;
+                        }
                     }
                 }
             }
@@ -67,6 +73,11 @@ public class ObjectSelection : MonoBehaviour
                 var meshRenderer = obj.GetComponent<MeshRenderer>();
                 if (meshRenderer != null) {
                     meshRenderer.material = originalMaterials[obj]; // Reset to the original material
+                } else {
+                    meshRenderer = obj.GetComponentInChildren<MeshRenderer>();
+                    if (meshRenderer != null) {
+                        meshRenderer.material = originalMaterials[obj]; // Reset to the original material
+                    }
                 }
                 objectsToRemove.Add(obj);
             }
