@@ -143,10 +143,12 @@ public class LowPolyTerrainGenerator : MonoBehaviour
                     Vector3 worldPos = terrainTransform.TransformPoint(localPos) + planeNormal * 5;
                     if (Physics.Raycast(worldPos, -planeNormal * 10, out RaycastHit hit, 10))
                     {
-                        GameObject asset = Instantiate(selectedBiomePrefabs.assets[Random.Range(0, selectedBiomePrefabs.assets.Count)], hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal), terrainTransform);
-                        placed = true;
-                        asset.gameObject.tag = "prop";
-                        placedObjects.Add(asset);
+                        if (hit.transform.gameObject.tag != "prop") {
+                            GameObject asset = Instantiate(selectedBiomePrefabs.assets[Random.Range(0, selectedBiomePrefabs.assets.Count)], hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal), terrainTransform);
+                            placed = true;
+                            asset.gameObject.tag = "prop";
+                            placedObjects.Add(asset);
+                        }
                     }
                 }
             }
@@ -202,6 +204,7 @@ public class LowPolyTerrainGenerator : MonoBehaviour
 
                 worldManager.AddChangedObject(changedObject);
                 changedObject.name = "CHANGEDSCALE" + randomObject.name;
+                changedObject.gameObject.tag = "prop";
                 break;
             case 1: // COLOR
                 changedObject = Instantiate(randomObject, randomObject.transform.position, randomObject.transform.rotation, randomObject.transform.parent);
@@ -213,11 +216,12 @@ public class LowPolyTerrainGenerator : MonoBehaviour
                     material.color.b + Random.Range(-0.1f, 0.1f)
                 );
                 changedObject.name = "CHANGEDCOLOR" + randomObject.name;
-
+                changedObject.gameObject.tag = "prop";
                 break;
             case 2: // ENTIRE OBJECT
                 changedObject = Instantiate(GetSelectedBiomePrefabs().assets[Random.Range(0, GetSelectedBiomePrefabs().assets.Count)], randomObject.transform.position, randomObject.transform.rotation, randomObject.transform.parent);
                 changedObject.name = "CHANGEDOBJECT" + randomObject.name;
+                changedObject.gameObject.tag = "prop";
                 localPos = changedObject.transform.position;
                 worldPos = terrainTransform.TransformPoint(localPos) + planeNormal * 5;
                 if (Physics.Raycast(worldPos, -planeNormal * 10, out RaycastHit hit2, 10))

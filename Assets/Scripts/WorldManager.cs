@@ -7,7 +7,7 @@ public class WorldManager : MonoBehaviour
 {
     private List<GameObject> changedObjects = new();
     public GameObject world;
-    public ObjectSelection scriptRefSelect;
+    public ObjectSelection scriptRefSelectL, scriptRefSelectR;
     public GodMovement scripRefMovement;
 
     private void Start()
@@ -46,7 +46,8 @@ public class WorldManager : MonoBehaviour
 
     public int GetChangedObjectCount()
     {
-        scriptRefSelect.SetChangedObjectList(changedObjects);
+        scriptRefSelectL.SetChangedObjectList(changedObjects);
+        scriptRefSelectR.SetChangedObjectList(changedObjects);
         return changedObjects.Count;
     }
 }

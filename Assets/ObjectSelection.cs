@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class ObjectSelection : MonoBehaviour
 {
-    private List<GameObject> changedObjects = new List<GameObject>();
-    public Transform rightThumb, rightPointer;
+    public Transform posThumb, posPointer;
     public InputActionReference triggerVal;
     public Material selectHighlight;
-    public GameObject selectionSphere; // Sphere to visualize the selection area
+    public GameObject selectionSphere;
+    private List<GameObject> changedObjects = new List<GameObject>();
     private Dictionary<GameObject, Material> originalMaterials = new Dictionary<GameObject, Material>();
     void Start() {
         if (selectionSphere != null) {
@@ -20,26 +21,25 @@ public class ObjectSelection : MonoBehaviour
     void Update()
     {
         float triggerValue = triggerVal.action.ReadValue<float>();
-        float distance = Vector3.Distance(rightThumb.position, rightPointer.position);
-        Vector3 middlePoint = (rightThumb.position + rightPointer.position) / 2;
+        float distance = Vector3.Distance(posThumb.position, posPointer.position);
+        
+        Vector3 middlePoint = (posThumb.position + posPointer.position) / 2;
         selectionSphere.transform.position = middlePoint;
+        
         float minDistance = .005f;
         float maxDistance = .065f;
 
-        if (distance < maxDistance && triggerValue > .1) {
-            if (selectionSphere != null) {
-                selectionSphere.SetActive(true);
-                float scale = Mathf.Lerp(.02f, .06f, (distance - minDistance) / (maxDistance - minDistance));
-                selectionSphere.transform.localScale = new Vector3(scale, scale, scale);
-            }
-            HashSet<GameObject> currentObjects = HighlightObjects();
-            foreach (GameObject temp in currentObjects) {
-                Debug.Log(temp);
+        if (distance < maxDistance && triggerValue > .1) { // enable selection sphere when pinching with trigger
+            selectionSphere.SetActive(true);
+            float scale = Mathf.Lerp(.03f, .1f, (distance - minDistance) / (maxDistance - minDistance)); // Calculate scale
+            selectionSphere.transform.localScale = new Vector3(scale, scale, scale);
+
+            HashSet<GameObject> currentObjects = HighlightObjects(); // Return gameobjects in radius
+            if (distance < minDistance && currentObjects.Count == 1) { // Check if selection made
+                Debug.Log(currentObjects.ElementAt(0)); // UPDATE THIS return selection check if right or wrong change score
             }
         } else {
-            if (selectionSphere != null) {
-                selectionSphere.SetActive(false);
-            }
+            selectionSphere.SetActive(false);
             ResetMaterials();
         }
     }
