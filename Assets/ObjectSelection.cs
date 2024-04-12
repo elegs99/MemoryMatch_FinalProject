@@ -20,7 +20,6 @@ public class ObjectSelection : MonoBehaviour
     void Update()
     {
         float triggerValue = triggerVal.action.ReadValue<float>();
-        Debug.Log(triggerValue);
         float distance = Vector3.Distance(rightThumb.position, rightPointer.position);
         Vector3 middlePoint = (rightThumb.position + rightPointer.position) / 2;
         selectionSphere.transform.position = middlePoint;
