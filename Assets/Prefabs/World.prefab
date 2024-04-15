@@ -119,25 +119,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b938967469211d34592f43997b652c0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  worldManager: {fileID: 0}
   assetCount: 10
   beachPrefabs:
     assets: []
   desertPrefabs:
-    assets: []
+    assets:
+    - {fileID: 4847339991140325196, guid: c06467058d258b9469496ef286c04ae0, type: 3}
+    - {fileID: 1047337827569959483, guid: 8538109b20f45414e9ece69ba6cc5177, type: 3}
+    - {fileID: 2741910602162701465, guid: a52f7afafd31c6049a066002444c2249, type: 3}
+    - {fileID: 3570720059939009750, guid: d1cb5b188900a2244bed08fb0757f63f, type: 3}
+    - {fileID: 2419743170799774640, guid: 1e9b919171fb74048a9c211cdb36d134, type: 3}
   forestPrefabs:
     assets:
-    - {fileID: 2549054593802932585, guid: bee651b89d6b3ef48b19cfe8a4c9fa42, type: 3}
-    - {fileID: 6739804228592001243, guid: 6cdd667aa0034cd4dadc8d58a65fb098, type: 3}
-    - {fileID: 5984911598340929997, guid: 5228c984e5be7284d8d83c18096254dd, type: 3}
-    - {fileID: 8277376828984627089, guid: b1251525c2a7a194bbcebc4e2fd72c1a, type: 3}
-    - {fileID: 6117071349010126079, guid: d250af4848f51154f9a2bf6a85b60ac2, type: 3}
-    - {fileID: 7098389285256826050, guid: fb070a2d31206d9499ecc8a77be0ebf0, type: 3}
-  selectedBiome: 2
+    - {fileID: 1265526584822912072, guid: 91c39c81784cc9641a3176eaa7b72979, type: 3}
+    - {fileID: 2905741246491293056, guid: 28dad45523bd2f441a67a626604bc04a, type: 3}
+    - {fileID: 3534858772319577171, guid: 5aa2379e9d5957b47a6545f811a4c1ee, type: 3}
+    - {fileID: 1974257913461851497, guid: 89a18a2f8b148c04fbc5193c1174e948, type: 3}
+    - {fileID: 4558001652303871919, guid: 1130256e354425044acac56bb52b86f1, type: 3}
+    - {fileID: 4265101900270516730, guid: 0c8976a67d015d54c9a22069f4daf12b, type: 3}
+  farmPrefabs:
+    assets:
+    - {fileID: 1813080173985968470, guid: a397d0824a706e945a97755a1e1a6091, type: 3}
+    - {fileID: 7674161503681036540, guid: e43ded9aae4c15b47b1de3f2f6ca0659, type: 3}
+    - {fileID: 5620926411196139436, guid: 738690e820297bf4c918fecf4ac014c2, type: 3}
+    - {fileID: 1760638514688487671, guid: 127d3ac7a44bcff4899b96205cca9046, type: 3}
+    - {fileID: 6860628251493361461, guid: 7ed8421612fdfd045a7b918b8da060d3, type: 3}
+    - {fileID: 2806362235123441036, guid: 3744ebb0118b5c64d900d3a31f288255, type: 3}
+  placedObjects: []
+  selectedBiome: 0
   beachTexture: {fileID: 2800000, guid: 85ed2b41abc7c82499e10ac4feaa0590, type: 3}
   desertTexture: {fileID: 2800000, guid: 16fdc16af892fc745890a4d5720a58dd, type: 3}
   forestTexture: {fileID: 2800000, guid: 7bd486cf36b61954d9012c6704ab80a4, type: 3}
+  farmTexture: {fileID: 2800000, guid: a207d850508a70c46b922ceafbea7a7b, type: 3}
   terrainScale: 10
-  heightMultiplier: 3
+  heightMultiplier: 1.2
   edgeBoundary: 1.91
 --- !u!1 &2162928942559692750
 GameObject:
@@ -258,23 +274,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b938967469211d34592f43997b652c0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  worldManager: {fileID: 0}
   assetCount: 10
   beachPrefabs:
     assets: []
   desertPrefabs:
-    assets: []
+    assets:
+    - {fileID: 4847339991140325196, guid: c06467058d258b9469496ef286c04ae0, type: 3}
+    - {fileID: 1047337827569959483, guid: 8538109b20f45414e9ece69ba6cc5177, type: 3}
+    - {fileID: 2741910602162701465, guid: a52f7afafd31c6049a066002444c2249, type: 3}
+    - {fileID: 3570720059939009750, guid: d1cb5b188900a2244bed08fb0757f63f, type: 3}
+    - {fileID: 2419743170799774640, guid: 1e9b919171fb74048a9c211cdb36d134, type: 3}
   forestPrefabs:
     assets:
-    - {fileID: 2549054593802932585, guid: bee651b89d6b3ef48b19cfe8a4c9fa42, type: 3}
-    - {fileID: 6739804228592001243, guid: 6cdd667aa0034cd4dadc8d58a65fb098, type: 3}
-    - {fileID: 5984911598340929997, guid: 5228c984e5be7284d8d83c18096254dd, type: 3}
-    - {fileID: 8277376828984627089, guid: b1251525c2a7a194bbcebc4e2fd72c1a, type: 3}
-    - {fileID: 6117071349010126079, guid: d250af4848f51154f9a2bf6a85b60ac2, type: 3}
-    - {fileID: 7098389285256826050, guid: fb070a2d31206d9499ecc8a77be0ebf0, type: 3}
-  selectedBiome: 2
+    - {fileID: 1265526584822912072, guid: 91c39c81784cc9641a3176eaa7b72979, type: 3}
+    - {fileID: 2905741246491293056, guid: 28dad45523bd2f441a67a626604bc04a, type: 3}
+    - {fileID: 3534858772319577171, guid: 5aa2379e9d5957b47a6545f811a4c1ee, type: 3}
+    - {fileID: 1974257913461851497, guid: 89a18a2f8b148c04fbc5193c1174e948, type: 3}
+    - {fileID: 4558001652303871919, guid: 1130256e354425044acac56bb52b86f1, type: 3}
+    - {fileID: 4265101900270516730, guid: 0c8976a67d015d54c9a22069f4daf12b, type: 3}
+  farmPrefabs:
+    assets:
+    - {fileID: 1813080173985968470, guid: a397d0824a706e945a97755a1e1a6091, type: 3}
+    - {fileID: 7674161503681036540, guid: e43ded9aae4c15b47b1de3f2f6ca0659, type: 3}
+    - {fileID: 5620926411196139436, guid: 738690e820297bf4c918fecf4ac014c2, type: 3}
+    - {fileID: 1760638514688487671, guid: 127d3ac7a44bcff4899b96205cca9046, type: 3}
+    - {fileID: 6860628251493361461, guid: 7ed8421612fdfd045a7b918b8da060d3, type: 3}
+    - {fileID: 2806362235123441036, guid: 3744ebb0118b5c64d900d3a31f288255, type: 3}
+  placedObjects: []
+  selectedBiome: 0
   beachTexture: {fileID: 2800000, guid: 85ed2b41abc7c82499e10ac4feaa0590, type: 3}
   desertTexture: {fileID: 2800000, guid: 16fdc16af892fc745890a4d5720a58dd, type: 3}
   forestTexture: {fileID: 2800000, guid: 7bd486cf36b61954d9012c6704ab80a4, type: 3}
+  farmTexture: {fileID: 2800000, guid: a207d850508a70c46b922ceafbea7a7b, type: 3}
   terrainScale: 10
   heightMultiplier: 3
   edgeBoundary: 1.91
@@ -397,25 +429,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b938967469211d34592f43997b652c0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  worldManager: {fileID: 0}
   assetCount: 10
   beachPrefabs:
     assets: []
   desertPrefabs:
-    assets: []
+    assets:
+    - {fileID: 4847339991140325196, guid: c06467058d258b9469496ef286c04ae0, type: 3}
+    - {fileID: 1047337827569959483, guid: 8538109b20f45414e9ece69ba6cc5177, type: 3}
+    - {fileID: 2741910602162701465, guid: a52f7afafd31c6049a066002444c2249, type: 3}
+    - {fileID: 3570720059939009750, guid: d1cb5b188900a2244bed08fb0757f63f, type: 3}
+    - {fileID: 2419743170799774640, guid: 1e9b919171fb74048a9c211cdb36d134, type: 3}
   forestPrefabs:
     assets:
-    - {fileID: 2549054593802932585, guid: bee651b89d6b3ef48b19cfe8a4c9fa42, type: 3}
-    - {fileID: 6739804228592001243, guid: 6cdd667aa0034cd4dadc8d58a65fb098, type: 3}
-    - {fileID: 5984911598340929997, guid: 5228c984e5be7284d8d83c18096254dd, type: 3}
-    - {fileID: 8277376828984627089, guid: b1251525c2a7a194bbcebc4e2fd72c1a, type: 3}
-    - {fileID: 6117071349010126079, guid: d250af4848f51154f9a2bf6a85b60ac2, type: 3}
-    - {fileID: 7098389285256826050, guid: fb070a2d31206d9499ecc8a77be0ebf0, type: 3}
-  selectedBiome: 2
+    - {fileID: 1265526584822912072, guid: 91c39c81784cc9641a3176eaa7b72979, type: 3}
+    - {fileID: 2905741246491293056, guid: 28dad45523bd2f441a67a626604bc04a, type: 3}
+    - {fileID: 3534858772319577171, guid: 5aa2379e9d5957b47a6545f811a4c1ee, type: 3}
+    - {fileID: 1974257913461851497, guid: 89a18a2f8b148c04fbc5193c1174e948, type: 3}
+    - {fileID: 4558001652303871919, guid: 1130256e354425044acac56bb52b86f1, type: 3}
+    - {fileID: 4265101900270516730, guid: 0c8976a67d015d54c9a22069f4daf12b, type: 3}
+  farmPrefabs:
+    assets:
+    - {fileID: 1813080173985968470, guid: a397d0824a706e945a97755a1e1a6091, type: 3}
+    - {fileID: 7674161503681036540, guid: e43ded9aae4c15b47b1de3f2f6ca0659, type: 3}
+    - {fileID: 5620926411196139436, guid: 738690e820297bf4c918fecf4ac014c2, type: 3}
+    - {fileID: 1760638514688487671, guid: 127d3ac7a44bcff4899b96205cca9046, type: 3}
+    - {fileID: 6860628251493361461, guid: 7ed8421612fdfd045a7b918b8da060d3, type: 3}
+    - {fileID: 2806362235123441036, guid: 3744ebb0118b5c64d900d3a31f288255, type: 3}
+  placedObjects: []
+  selectedBiome: 0
   beachTexture: {fileID: 2800000, guid: 85ed2b41abc7c82499e10ac4feaa0590, type: 3}
   desertTexture: {fileID: 2800000, guid: 16fdc16af892fc745890a4d5720a58dd, type: 3}
   forestTexture: {fileID: 2800000, guid: 7bd486cf36b61954d9012c6704ab80a4, type: 3}
+  farmTexture: {fileID: 2800000, guid: a207d850508a70c46b922ceafbea7a7b, type: 3}
   terrainScale: 10
-  heightMultiplier: 3
+  heightMultiplier: 0.96
   edgeBoundary: 1.91
 --- !u!1 &5915063522196423955
 GameObject:
@@ -536,23 +584,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b938967469211d34592f43997b652c0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  worldManager: {fileID: 0}
   assetCount: 10
   beachPrefabs:
     assets: []
   desertPrefabs:
-    assets: []
+    assets:
+    - {fileID: 4847339991140325196, guid: c06467058d258b9469496ef286c04ae0, type: 3}
+    - {fileID: 1047337827569959483, guid: 8538109b20f45414e9ece69ba6cc5177, type: 3}
+    - {fileID: 2741910602162701465, guid: a52f7afafd31c6049a066002444c2249, type: 3}
+    - {fileID: 3570720059939009750, guid: d1cb5b188900a2244bed08fb0757f63f, type: 3}
+    - {fileID: 2419743170799774640, guid: 1e9b919171fb74048a9c211cdb36d134, type: 3}
   forestPrefabs:
     assets:
-    - {fileID: 2549054593802932585, guid: bee651b89d6b3ef48b19cfe8a4c9fa42, type: 3}
-    - {fileID: 6739804228592001243, guid: 6cdd667aa0034cd4dadc8d58a65fb098, type: 3}
-    - {fileID: 5984911598340929997, guid: 5228c984e5be7284d8d83c18096254dd, type: 3}
-    - {fileID: 8277376828984627089, guid: b1251525c2a7a194bbcebc4e2fd72c1a, type: 3}
-    - {fileID: 6117071349010126079, guid: d250af4848f51154f9a2bf6a85b60ac2, type: 3}
-    - {fileID: 7098389285256826050, guid: fb070a2d31206d9499ecc8a77be0ebf0, type: 3}
-  selectedBiome: 2
+    - {fileID: 1265526584822912072, guid: 91c39c81784cc9641a3176eaa7b72979, type: 3}
+    - {fileID: 2905741246491293056, guid: 28dad45523bd2f441a67a626604bc04a, type: 3}
+    - {fileID: 3534858772319577171, guid: 5aa2379e9d5957b47a6545f811a4c1ee, type: 3}
+    - {fileID: 1974257913461851497, guid: 89a18a2f8b148c04fbc5193c1174e948, type: 3}
+    - {fileID: 4558001652303871919, guid: 1130256e354425044acac56bb52b86f1, type: 3}
+    - {fileID: 4265101900270516730, guid: 0c8976a67d015d54c9a22069f4daf12b, type: 3}
+  farmPrefabs:
+    assets:
+    - {fileID: 1813080173985968470, guid: a397d0824a706e945a97755a1e1a6091, type: 3}
+    - {fileID: 7674161503681036540, guid: e43ded9aae4c15b47b1de3f2f6ca0659, type: 3}
+    - {fileID: 5620926411196139436, guid: 738690e820297bf4c918fecf4ac014c2, type: 3}
+    - {fileID: 1760638514688487671, guid: 127d3ac7a44bcff4899b96205cca9046, type: 3}
+    - {fileID: 6860628251493361461, guid: 7ed8421612fdfd045a7b918b8da060d3, type: 3}
+    - {fileID: 2806362235123441036, guid: 3744ebb0118b5c64d900d3a31f288255, type: 3}
+  placedObjects: []
+  selectedBiome: 0
   beachTexture: {fileID: 2800000, guid: 85ed2b41abc7c82499e10ac4feaa0590, type: 3}
   desertTexture: {fileID: 2800000, guid: 16fdc16af892fc745890a4d5720a58dd, type: 3}
   forestTexture: {fileID: 2800000, guid: 7bd486cf36b61954d9012c6704ab80a4, type: 3}
+  farmTexture: {fileID: 2800000, guid: a207d850508a70c46b922ceafbea7a7b, type: 3}
   terrainScale: 10
   heightMultiplier: 3
   edgeBoundary: 1.91
@@ -675,23 +739,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b938967469211d34592f43997b652c0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  worldManager: {fileID: 0}
   assetCount: 10
   beachPrefabs:
     assets: []
   desertPrefabs:
-    assets: []
+    assets:
+    - {fileID: 4847339991140325196, guid: c06467058d258b9469496ef286c04ae0, type: 3}
+    - {fileID: 1047337827569959483, guid: 8538109b20f45414e9ece69ba6cc5177, type: 3}
+    - {fileID: 2741910602162701465, guid: a52f7afafd31c6049a066002444c2249, type: 3}
+    - {fileID: 3570720059939009750, guid: d1cb5b188900a2244bed08fb0757f63f, type: 3}
+    - {fileID: 2419743170799774640, guid: 1e9b919171fb74048a9c211cdb36d134, type: 3}
   forestPrefabs:
     assets:
-    - {fileID: 2549054593802932585, guid: bee651b89d6b3ef48b19cfe8a4c9fa42, type: 3}
-    - {fileID: 6739804228592001243, guid: 6cdd667aa0034cd4dadc8d58a65fb098, type: 3}
-    - {fileID: 5984911598340929997, guid: 5228c984e5be7284d8d83c18096254dd, type: 3}
-    - {fileID: 8277376828984627089, guid: b1251525c2a7a194bbcebc4e2fd72c1a, type: 3}
-    - {fileID: 6117071349010126079, guid: d250af4848f51154f9a2bf6a85b60ac2, type: 3}
-    - {fileID: 7098389285256826050, guid: fb070a2d31206d9499ecc8a77be0ebf0, type: 3}
-  selectedBiome: 2
+    - {fileID: 1265526584822912072, guid: 91c39c81784cc9641a3176eaa7b72979, type: 3}
+    - {fileID: 2905741246491293056, guid: 28dad45523bd2f441a67a626604bc04a, type: 3}
+    - {fileID: 3534858772319577171, guid: 5aa2379e9d5957b47a6545f811a4c1ee, type: 3}
+    - {fileID: 1974257913461851497, guid: 89a18a2f8b148c04fbc5193c1174e948, type: 3}
+    - {fileID: 4558001652303871919, guid: 1130256e354425044acac56bb52b86f1, type: 3}
+    - {fileID: 4265101900270516730, guid: 0c8976a67d015d54c9a22069f4daf12b, type: 3}
+  farmPrefabs:
+    assets:
+    - {fileID: 1813080173985968470, guid: a397d0824a706e945a97755a1e1a6091, type: 3}
+    - {fileID: 7674161503681036540, guid: e43ded9aae4c15b47b1de3f2f6ca0659, type: 3}
+    - {fileID: 5620926411196139436, guid: 738690e820297bf4c918fecf4ac014c2, type: 3}
+    - {fileID: 1760638514688487671, guid: 127d3ac7a44bcff4899b96205cca9046, type: 3}
+    - {fileID: 6860628251493361461, guid: 7ed8421612fdfd045a7b918b8da060d3, type: 3}
+    - {fileID: 2806362235123441036, guid: 3744ebb0118b5c64d900d3a31f288255, type: 3}
+  placedObjects: []
+  selectedBiome: 0
   beachTexture: {fileID: 2800000, guid: 85ed2b41abc7c82499e10ac4feaa0590, type: 3}
   desertTexture: {fileID: 2800000, guid: 16fdc16af892fc745890a4d5720a58dd, type: 3}
   forestTexture: {fileID: 2800000, guid: 7bd486cf36b61954d9012c6704ab80a4, type: 3}
+  farmTexture: {fileID: 2800000, guid: a207d850508a70c46b922ceafbea7a7b, type: 3}
   terrainScale: 10
   heightMultiplier: 3
   edgeBoundary: 1.91
@@ -814,23 +894,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b938967469211d34592f43997b652c0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  worldManager: {fileID: 0}
   assetCount: 10
   beachPrefabs:
     assets: []
   desertPrefabs:
-    assets: []
+    assets:
+    - {fileID: 4847339991140325196, guid: c06467058d258b9469496ef286c04ae0, type: 3}
+    - {fileID: 1047337827569959483, guid: 8538109b20f45414e9ece69ba6cc5177, type: 3}
+    - {fileID: 2741910602162701465, guid: a52f7afafd31c6049a066002444c2249, type: 3}
+    - {fileID: 3570720059939009750, guid: d1cb5b188900a2244bed08fb0757f63f, type: 3}
+    - {fileID: 2419743170799774640, guid: 1e9b919171fb74048a9c211cdb36d134, type: 3}
   forestPrefabs:
     assets:
-    - {fileID: 2549054593802932585, guid: bee651b89d6b3ef48b19cfe8a4c9fa42, type: 3}
-    - {fileID: 6739804228592001243, guid: 6cdd667aa0034cd4dadc8d58a65fb098, type: 3}
-    - {fileID: 5984911598340929997, guid: 5228c984e5be7284d8d83c18096254dd, type: 3}
-    - {fileID: 8277376828984627089, guid: b1251525c2a7a194bbcebc4e2fd72c1a, type: 3}
-    - {fileID: 6117071349010126079, guid: d250af4848f51154f9a2bf6a85b60ac2, type: 3}
-    - {fileID: 7098389285256826050, guid: fb070a2d31206d9499ecc8a77be0ebf0, type: 3}
-  selectedBiome: 2
+    - {fileID: 1265526584822912072, guid: 91c39c81784cc9641a3176eaa7b72979, type: 3}
+    - {fileID: 2905741246491293056, guid: 28dad45523bd2f441a67a626604bc04a, type: 3}
+    - {fileID: 3534858772319577171, guid: 5aa2379e9d5957b47a6545f811a4c1ee, type: 3}
+    - {fileID: 1974257913461851497, guid: 89a18a2f8b148c04fbc5193c1174e948, type: 3}
+    - {fileID: 4558001652303871919, guid: 1130256e354425044acac56bb52b86f1, type: 3}
+    - {fileID: 4265101900270516730, guid: 0c8976a67d015d54c9a22069f4daf12b, type: 3}
+  farmPrefabs:
+    assets:
+    - {fileID: 1813080173985968470, guid: a397d0824a706e945a97755a1e1a6091, type: 3}
+    - {fileID: 7674161503681036540, guid: e43ded9aae4c15b47b1de3f2f6ca0659, type: 3}
+    - {fileID: 5620926411196139436, guid: 738690e820297bf4c918fecf4ac014c2, type: 3}
+    - {fileID: 1760638514688487671, guid: 127d3ac7a44bcff4899b96205cca9046, type: 3}
+    - {fileID: 6860628251493361461, guid: 7ed8421612fdfd045a7b918b8da060d3, type: 3}
+    - {fileID: 2806362235123441036, guid: 3744ebb0118b5c64d900d3a31f288255, type: 3}
+  placedObjects: []
+  selectedBiome: 0
   beachTexture: {fileID: 2800000, guid: 85ed2b41abc7c82499e10ac4feaa0590, type: 3}
   desertTexture: {fileID: 2800000, guid: 16fdc16af892fc745890a4d5720a58dd, type: 3}
   forestTexture: {fileID: 2800000, guid: 7bd486cf36b61954d9012c6704ab80a4, type: 3}
+  farmTexture: {fileID: 2800000, guid: a207d850508a70c46b922ceafbea7a7b, type: 3}
   terrainScale: 10
   heightMultiplier: 3
   edgeBoundary: 1.91

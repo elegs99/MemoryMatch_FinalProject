@@ -17,13 +17,15 @@ public class LowPolyTerrainGenerator : MonoBehaviour
     public BiomePrefabs beachPrefabs;
     public BiomePrefabs desertPrefabs;
     public BiomePrefabs forestPrefabs;
+    public BiomePrefabs farmPrefabs;
     public List<GameObject> placedObjects = new List<GameObject>();
 
     public enum BiomeType
     {
         Beach,
         Desert,
-        Forest
+        Forest,
+        Farm
     }
 
     public BiomeType selectedBiome = BiomeType.Forest;
@@ -31,6 +33,7 @@ public class LowPolyTerrainGenerator : MonoBehaviour
     public Texture2D beachTexture;
     public Texture2D desertTexture;
     public Texture2D forestTexture;
+    public Texture2D farmTexture;
 
     public float terrainScale = 5f;
     public float heightMultiplier = 2f;
@@ -65,6 +68,9 @@ public class LowPolyTerrainGenerator : MonoBehaviour
             case BiomeType.Forest:
                 selectedTexture = forestTexture;
                 break;
+            case BiomeType.Farm:
+                selectedTexture = farmTexture;
+                break;
         }
 
         if (selectedTexture != null)
@@ -73,6 +79,7 @@ public class LowPolyTerrainGenerator : MonoBehaviour
             if (renderer != null)
             {
                 renderer.material.mainTexture = selectedTexture;
+                renderer.material.shader = Shader.Find("Unlit/Texture");
             }
         }
     }
@@ -165,6 +172,8 @@ public class LowPolyTerrainGenerator : MonoBehaviour
                 return desertPrefabs;
             case BiomeType.Forest:
                 return forestPrefabs;
+            case BiomeType.Farm:
+                return farmPrefabs;
             default:
                 return null;
         }
@@ -191,7 +200,8 @@ public class LowPolyTerrainGenerator : MonoBehaviour
             case 0: // SCALE
                 changedObject = Instantiate(randomObject, randomObject.transform.position, randomObject.transform.rotation, randomObject.transform.parent);
                 float scale = Random.Range(0.5f, 2.0f);
-                changedObject.transform.localScale = new Vector3(scale, scale, scale);
+                Vector3 currentScale = changedObject.transform.localScale;
+                changedObject.transform.localScale = new Vector3(currentScale.x * scale, currentScale.y * scale, currentScale.z * scale);
 
                 localPos = changedObject.transform.position;
                 worldPos = terrainTransform.TransformPoint(localPos) + planeNormal * 5;
@@ -202,21 +212,22 @@ public class LowPolyTerrainGenerator : MonoBehaviour
                     changedObject.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
                 }
 
-                worldManager.AddChangedObject(changedObject);
                 changedObject.name = "CHANGEDSCALE" + randomObject.name;
                 changedObject.gameObject.tag = "prop";
+                worldManager.AddChangedObject(changedObject);
                 break;
             case 1: // COLOR
                 changedObject = Instantiate(randomObject, randomObject.transform.position, randomObject.transform.rotation, randomObject.transform.parent);
 
                 Material material = changedObject.GetComponent<MeshRenderer>().material;
                 material.color = new Color(
-                    material.color.r + Random.Range(-0.1f, 0.1f),
-                    material.color.g + Random.Range(-0.1f, 0.1f),
-                    material.color.b + Random.Range(-0.1f, 0.1f)
+                    Random.Range(0f, 1f),
+                    Random.Range(0f, 1f),
+                    Random.Range(0f, 1f)
                 );
                 changedObject.name = "CHANGEDCOLOR" + randomObject.name;
                 changedObject.gameObject.tag = "prop";
+                worldManager.AddChangedObject(changedObject);
                 break;
             case 2: // ENTIRE OBJECT
                 changedObject = Instantiate(GetSelectedBiomePrefabs().assets[Random.Range(0, GetSelectedBiomePrefabs().assets.Count)], randomObject.transform.position, randomObject.transform.rotation, randomObject.transform.parent);
@@ -229,6 +240,7 @@ public class LowPolyTerrainGenerator : MonoBehaviour
                     changedObject.transform.position = hit2.point;
                     changedObject.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit2.normal);
                 }
+                worldManager.AddChangedObject(changedObject);
 
                 break;
         }

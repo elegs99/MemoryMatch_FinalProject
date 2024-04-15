@@ -1989,10 +1989,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 691460913}
     - target: {fileID: 74292509874522526, guid: 03cb4a2bc1e06944093e4f07b0a494c2, type: 3}
-      propertyPath: forestPrefabs.assets.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 74292509874522526, guid: 03cb4a2bc1e06944093e4f07b0a494c2, type: 3}
       propertyPath: forestPrefabs.assets.Array.data[0]
       value: 
       objectReference: {fileID: 1265526584822912072, guid: 91c39c81784cc9641a3176eaa7b72979, type: 3}
@@ -2021,10 +2017,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 691460913}
     - target: {fileID: 97305358488365351, guid: 03cb4a2bc1e06944093e4f07b0a494c2, type: 3}
-      propertyPath: forestPrefabs.assets.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 97305358488365351, guid: 03cb4a2bc1e06944093e4f07b0a494c2, type: 3}
       propertyPath: forestPrefabs.assets.Array.data[0]
       value: 
       objectReference: {fileID: 1265526584822912072, guid: 91c39c81784cc9641a3176eaa7b72979, type: 3}
@@ -2048,18 +2040,10 @@ PrefabInstance:
       propertyPath: forestPrefabs.assets.Array.data[5]
       value: 
       objectReference: {fileID: 4265101900270516730, guid: 0c8976a67d015d54c9a22069f4daf12b, type: 3}
-    - target: {fileID: 3482397433960449194, guid: 03cb4a2bc1e06944093e4f07b0a494c2, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6558577818001447439, guid: 03cb4a2bc1e06944093e4f07b0a494c2, type: 3}
       propertyPath: worldManager
       value: 
       objectReference: {fileID: 691460913}
-    - target: {fileID: 6558577818001447439, guid: 03cb4a2bc1e06944093e4f07b0a494c2, type: 3}
-      propertyPath: forestPrefabs.assets.Array.size
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 6558577818001447439, guid: 03cb4a2bc1e06944093e4f07b0a494c2, type: 3}
       propertyPath: forestPrefabs.assets.Array.data[0]
       value: 
@@ -2088,10 +2072,6 @@ PrefabInstance:
       propertyPath: worldManager
       value: 
       objectReference: {fileID: 691460913}
-    - target: {fileID: 7604814953851156684, guid: 03cb4a2bc1e06944093e4f07b0a494c2, type: 3}
-      propertyPath: forestPrefabs.assets.Array.size
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 7604814953851156684, guid: 03cb4a2bc1e06944093e4f07b0a494c2, type: 3}
       propertyPath: forestPrefabs.assets.Array.data[0]
       value: 
@@ -2165,10 +2145,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 691460913}
     - target: {fileID: 8136609663237392835, guid: 03cb4a2bc1e06944093e4f07b0a494c2, type: 3}
-      propertyPath: forestPrefabs.assets.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8136609663237392835, guid: 03cb4a2bc1e06944093e4f07b0a494c2, type: 3}
       propertyPath: forestPrefabs.assets.Array.data[0]
       value: 
       objectReference: {fileID: 1265526584822912072, guid: 91c39c81784cc9641a3176eaa7b72979, type: 3}
@@ -2196,10 +2172,6 @@ PrefabInstance:
       propertyPath: worldManager
       value: 
       objectReference: {fileID: 691460913}
-    - target: {fileID: 9207049498916703975, guid: 03cb4a2bc1e06944093e4f07b0a494c2, type: 3}
-      propertyPath: forestPrefabs.assets.Array.size
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 9207049498916703975, guid: 03cb4a2bc1e06944093e4f07b0a494c2, type: 3}
       propertyPath: forestPrefabs.assets.Array.data[0]
       value: 
