@@ -200,7 +200,7 @@ public class LowPolyTerrainGenerator : MonoBehaviour
     {
         /* Coin flip to decide if we're changing assets on this plane, if we decide no but there aren't
          * any assets changed yet we'll override this to make sure there's at least one asset changed always */
-        if(Random.Range(0, 2) == 0)
+        if(Random.Range(0, 2) == 0 && worldManager.GetChangedObjectCount() >= 1)
         {
             return;
         }
