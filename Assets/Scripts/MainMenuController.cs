@@ -17,6 +17,11 @@ public class MainMenuController : MonoBehaviour
     public GameObject leftButton;
     public GameObject rightButton;
 
+    private void Start()
+    {
+        levelText.text = levelNames[level];
+    }
+
     void Update()
     {
         Vector3 forwardFlat = playerCamera.forward;
@@ -37,6 +42,15 @@ public class MainMenuController : MonoBehaviour
         {
             leftButton.SetActive(true);
         }
+
+        if (level == levelNames.Count - 1)
+        {
+            rightButton.SetActive(false);
+        }
+        else
+        {
+            rightButton.SetActive(true);
+        }
     }
 
     public void PressPlay()
@@ -55,6 +69,8 @@ public class MainMenuController : MonoBehaviour
         {
             level++;
         }
+
+        Debug.Log(level);
 
         levelText.text = levelNames[level];
     }

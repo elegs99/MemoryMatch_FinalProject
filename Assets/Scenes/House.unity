@@ -864,6 +864,7 @@ MonoBehaviour:
   levelDifficulty: challenge
   lives: 3
   timerText: {fileID: 27121718}
+  ObjChangeText: {fileID: 0}
   livesText: {fileID: 2118659446}
 --- !u!1 &758026975
 GameObject:
@@ -892,7 +893,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 758026975}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 21.67}
+  m_LocalPosition: {x: 0, y: 0, z: 20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -902,7 +903,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: -1.1176}
+  m_AnchoredPosition: {x: 0, y: -3.99}
   m_SizeDelta: {x: 40, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &758026978
@@ -955,7 +956,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 1777106015}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -3190,6 +3191,7 @@ MonoBehaviour:
   triggerVal: {fileID: -4289430672226363583, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   selectItemButton: {fileID: -8270564778575511633, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   selectHighlight: {fileID: 2100000, guid: bea5b764171f3d84580d705c5c8ec5b4, type: 2}
+  selectedHighlight: {fileID: 0}
   selectionSphere: {fileID: 1799003029}
 --- !u!1 &2052729950
 GameObject:
@@ -3660,6 +3662,7 @@ MonoBehaviour:
   triggerVal: {fileID: -5908353012961274365, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   selectItemButton: {fileID: 8754798727640781753, guid: 4009733ab1fa2ed49b06a5b01e7b7935, type: 3}
   selectHighlight: {fileID: 2100000, guid: bea5b764171f3d84580d705c5c8ec5b4, type: 2}
+  selectedHighlight: {fileID: 0}
   selectionSphere: {fileID: 1314127768}
 --- !u!1001 &2114049848
 PrefabInstance:

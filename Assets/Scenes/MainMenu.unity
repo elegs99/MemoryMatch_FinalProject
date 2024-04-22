@@ -587,6 +587,7 @@ MonoBehaviour:
   triggerVal: {fileID: -5908353012961274365, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   selectItemButton: {fileID: 0}
   selectHighlight: {fileID: 2100000, guid: bea5b764171f3d84580d705c5c8ec5b4, type: 2}
+  selectedHighlight: {fileID: 0}
   selectionSphere: {fileID: 0}
 --- !u!4 &221238650
 Transform:
@@ -957,6 +958,7 @@ MonoBehaviour:
   levelText: {fileID: 2110508566}
   levelNames:
   - Outdoors
+  - House
   leftButton: {fileID: 1265399506}
   rightButton: {fileID: 557148888}
 --- !u!114 &299973048
@@ -1384,7 +1386,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: left
+          m_StringArgument: right
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &557148891
@@ -3952,6 +3954,7 @@ MonoBehaviour:
   triggerVal: {fileID: -4289430672226363583, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   selectItemButton: {fileID: 0}
   selectHighlight: {fileID: 2100000, guid: bea5b764171f3d84580d705c5c8ec5b4, type: 2}
+  selectedHighlight: {fileID: 0}
   selectionSphere: {fileID: 0}
 --- !u!1001 &1776953333
 PrefabInstance:
