@@ -12,13 +12,9 @@ public class ObjectSelection : MonoBehaviour
     public InputActionReference selectItemButton;
     public Material selectHighlight;
     public GameObject selectionSphere;
-    private List<GameObject> changedObjects = new List<GameObject>();
-    private Dictionary<GameObject, Material> originalMaterials = new Dictionary<GameObject, Material>();
-
+    List<GameObject> changedObjects = new List<GameObject>();
+    Dictionary<GameObject, Material> originalMaterials = new Dictionary<GameObject, Material>();
     HashSet<GameObject> currentObjects = new HashSet<GameObject>();
-
-    List<GameObject> objectsToRemove = new List<GameObject>();
-
     void Start() {
         if (selectionSphere != null) {
             selectionSphere.SetActive(false); // Initially disable the sphere
@@ -39,7 +35,6 @@ public class ObjectSelection : MonoBehaviour
         float triggerValue = triggerVal.action.ReadValue<float>();
         float distance = Vector3.Distance(posThumb.position, posPointer.position);
         float minDistance = .005f;
-        float maxDistance = .065f;
 
         if (distance < minDistance && currentObjects.Count == 1)
         {
@@ -48,8 +43,6 @@ public class ObjectSelection : MonoBehaviour
             if (found != null)
             {
                 Debug.Log(found.name);
-                originalMaterials.Remove(found);
-                changedObjects.Remove(found);
                 worldManager.RemoveChangedObject(found);
             }
             else
@@ -75,14 +68,14 @@ public class ObjectSelection : MonoBehaviour
             float scale = Mathf.Lerp(.03f, .1f, (distance - minDistance) / (maxDistance - minDistance));
             selectionSphere.transform.localScale = new Vector3(scale, scale, scale);
 
-            currentObjects = HighlightObjects();
+            HighlightObjects();
         } else {
             selectionSphere.SetActive(false);
             ResetMaterials();
         }
     }
 
-    private HashSet<GameObject> HighlightObjects() {
+    private void HighlightObjects() {
         currentObjects.Clear();
         Collider[] hitColliders = Physics.OverlapSphere(selectionSphere.transform.position, selectionSphere.transform.localScale.x / 2);
         foreach (var hitCollider in hitColliders) {
@@ -114,14 +107,9 @@ public class ObjectSelection : MonoBehaviour
                         meshRenderer.material = originalMaterials[obj];
                     }
                 }
-                objectsToRemove.Add(obj);
+                originalMaterials.Remove(obj);
             }
         }
-
-        foreach (var obj in objectsToRemove) {
-            originalMaterials.Remove(obj);
-        }
-        return currentObjects;
     }
 
     private void ResetMaterials() {
