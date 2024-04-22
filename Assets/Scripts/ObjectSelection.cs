@@ -11,10 +11,11 @@ public class ObjectSelection : MonoBehaviour
     public InputActionReference triggerVal;
     public InputActionReference selectItemButton;
     public Material selectHighlight;
+    public Material selectedHighlight;
     public GameObject selectionSphere;
     List<GameObject> changedObjects = new List<GameObject>();
     Dictionary<GameObject, Material> originalMaterials = new Dictionary<GameObject, Material>();
-    HashSet<GameObject> currentObjects = new HashSet<GameObject>();
+    List<GameObject> currentObjects = new List<GameObject>();
     void Start() {
         if (selectionSphere != null) {
             selectionSphere.SetActive(false); // Initially disable the sphere
@@ -43,6 +44,11 @@ public class ObjectSelection : MonoBehaviour
             if (found != null)
             {
                 Debug.Log(found.name);
+                originalMaterials.Remove(found);
+                found.gameObject.tag = "Finish";
+                found.TryGetComponent<MeshRenderer>(out var meshRenderer);
+                originalMaterials[found] = meshRenderer.material;
+                meshRenderer.material = selectedHighlight;
                 worldManager.RemoveChangedObject(found);
             }
             else

@@ -135,7 +135,6 @@ public class WorldManager : MonoBehaviour
     public void RemoveChangedObject(GameObject obj)
     {
         changedObjects.Remove(obj);
-        Destroy(obj);
         GetChangedObjectCount();
     }
 
