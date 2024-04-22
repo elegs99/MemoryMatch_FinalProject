@@ -17,6 +17,8 @@ public class ObjectSelection : MonoBehaviour
 
     HashSet<GameObject> currentObjects = new HashSet<GameObject>();
 
+    List<GameObject> objectsToRemove = new List<GameObject>();
+
     void Start() {
         if (selectionSphere != null) {
             selectionSphere.SetActive(false); // Initially disable the sphere
@@ -46,7 +48,7 @@ public class ObjectSelection : MonoBehaviour
             if (found != null)
             {
                 Debug.Log(found.name);
-
+                originalMaterials.Remove(found);
                 changedObjects.Remove(found);
                 worldManager.RemoveChangedObject(found);
             }
@@ -81,9 +83,8 @@ public class ObjectSelection : MonoBehaviour
     }
 
     private HashSet<GameObject> HighlightObjects() {
+        currentObjects.Clear();
         Collider[] hitColliders = Physics.OverlapSphere(selectionSphere.transform.position, selectionSphere.transform.localScale.x / 2);
-        HashSet<GameObject> currentObjects = new HashSet<GameObject>();
-
         foreach (var hitCollider in hitColliders) {
             if (hitCollider.tag == "prop") {
                 GameObject obj = hitCollider.gameObject;
@@ -103,7 +104,6 @@ public class ObjectSelection : MonoBehaviour
             }
         }
 
-        List<GameObject> objectsToRemove = new List<GameObject>();
         foreach (var obj in originalMaterials.Keys) {
             if (!currentObjects.Contains(obj)) {
                 if (obj.TryGetComponent<MeshRenderer>(out var meshRenderer)) {
