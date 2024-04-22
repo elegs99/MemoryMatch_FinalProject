@@ -32,8 +32,6 @@ public class ObjectSelection : MonoBehaviour
         selectItemButton.action.Enable();
     }
 
-    
-
     void OnSelection(InputAction.CallbackContext context)
     {
         float triggerValue = triggerVal.action.ReadValue<float>();

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Windows;
 
 public class WorldManager : MonoBehaviour
 {
@@ -44,7 +45,13 @@ public class WorldManager : MonoBehaviour
     }
     private void Update() {
         Debug.Log(thumbStick.action.ReadValue<Vector2>());
+        if(lives == 0)
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+            return;
+        }
     }
+
     IEnumerator SpawnChallengeMode()
     {
         GameObject dupWorld = Instantiate(world, world.transform.position, world.transform.rotation);
