@@ -585,6 +585,7 @@ MonoBehaviour:
   posThumb: {fileID: 847537236}
   posPointer: {fileID: 847537235}
   triggerVal: {fileID: -5908353012961274365, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  selectItemButton: {fileID: 0}
   selectHighlight: {fileID: 2100000, guid: bea5b764171f3d84580d705c5c8ec5b4, type: 2}
   selectionSphere: {fileID: 0}
 --- !u!4 &221238650
@@ -3949,6 +3950,7 @@ MonoBehaviour:
   posThumb: {fileID: 1865572996}
   posPointer: {fileID: 1865572997}
   triggerVal: {fileID: -4289430672226363583, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  selectItemButton: {fileID: 0}
   selectHighlight: {fileID: 2100000, guid: bea5b764171f3d84580d705c5c8ec5b4, type: 2}
   selectionSphere: {fileID: 0}
 --- !u!1001 &1776953333
