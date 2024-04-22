@@ -215,7 +215,7 @@ public class LowPolyTerrainGenerator : MonoBehaviour
         switch (assetChangeType)
         {
             case 0: // SCALE
-                changedObject = Instantiate(randomObject, randomObject.transform.position, randomObject.transform.rotation, randomObject.transform.parent);
+                changedObject = randomObject;
                 float scale = Random.Range(0.5f, 2.0f);
                 Vector3 currentScale = changedObject.transform.localScale;
                 changedObject.transform.localScale = new Vector3(currentScale.x * scale, currentScale.y * scale, currentScale.z * scale);
@@ -251,7 +251,7 @@ public class LowPolyTerrainGenerator : MonoBehaviour
                 BiomeType newRandomBiome;
                 do {
                     newRandomBiome = GetRandomBiome(currentBiome);
-                }while (newRandomBiome != currentBiome);
+                }while (newRandomBiome == currentBiome);
                 selectedBiome = newRandomBiome;
                 changedObject = Instantiate(GetSelectedBiomePrefabs().assets[Random.Range(0, GetSelectedBiomePrefabs().assets.Count)], randomObject.transform.position, randomObject.transform.rotation, randomObject.transform.parent);
                 changedObject.name = "CHANGEDOBJECT" + randomObject.name;
