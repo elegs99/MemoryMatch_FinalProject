@@ -18,6 +18,11 @@ public class LowPolyTerrainGenerator : MonoBehaviour
     public BiomePrefabs desertPrefabs;
     public BiomePrefabs forestPrefabs;
     public BiomePrefabs farmPrefabs;
+    public BiomePrefabs bedroomPrefabs;
+    public BiomePrefabs kitchenPrefabs;
+    public BiomePrefabs livingroomPrefabs;
+    public BiomePrefabs bathroomPrefabs;
+
     public List<GameObject> placedObjects = new List<GameObject>();
 
     public enum BiomeType
@@ -25,7 +30,11 @@ public class LowPolyTerrainGenerator : MonoBehaviour
         Beach,
         Desert,
         Forest,
-        Farm
+        Farm,
+        Bedroom,
+        Kitchen,
+        Livingroom,
+        Bathroom
     }
 
     public BiomeType selectedBiome = BiomeType.Forest;
@@ -34,6 +43,11 @@ public class LowPolyTerrainGenerator : MonoBehaviour
     public Texture2D desertTexture;
     public Texture2D forestTexture;
     public Texture2D farmTexture;
+    public Texture2D bedroomTexture;
+    public Texture2D kitchenTexture;
+    public Texture2D livingroomTexture;
+    public Texture2D bathroomTexture;
+
 
     public float terrainScale = 5f;
     public float heightMultiplier = 2f;
@@ -70,6 +84,18 @@ public class LowPolyTerrainGenerator : MonoBehaviour
                 break;
             case BiomeType.Farm:
                 selectedTexture = farmTexture;
+                break;
+            case BiomeType.Bedroom:
+                selectedTexture = bedroomTexture;
+                break;
+            case BiomeType.Kitchen:
+                selectedTexture = kitchenTexture;
+                break;
+            case BiomeType.Livingroom:
+                selectedTexture = livingroomTexture;
+                break;
+            case BiomeType.Bathroom:
+                selectedTexture = bathroomTexture;
                 break;
         }
 
@@ -174,6 +200,14 @@ public class LowPolyTerrainGenerator : MonoBehaviour
                 return forestPrefabs;
             case BiomeType.Farm:
                 return farmPrefabs;
+            case BiomeType.Bedroom:
+                return bedroomPrefabs;
+            case BiomeType.Kitchen:
+                return kitchenPrefabs;
+            case BiomeType.Livingroom:
+                return livingroomPrefabs;
+            case BiomeType.Bathroom:
+                return bathroomPrefabs;
             default:
                 return null;
         }
@@ -191,6 +225,8 @@ public class LowPolyTerrainGenerator : MonoBehaviour
                 return BiomeType.Forest;
             case 4:
                 return BiomeType.Farm;
+            case 5:
+                return BiomeType.Bedroom;
             default:
                 return BiomeType.Farm;
         }
@@ -207,7 +243,7 @@ public class LowPolyTerrainGenerator : MonoBehaviour
 
         GameObject randomObject = placedObjects[Random.Range(0, placedObjects.Count)];
         GameObject changedObject;
-        int assetChangeType = Random.Range(0, 3);
+        int assetChangeType = Random.Range(0, 4);
 
         Transform terrainTransform = this.transform;
         Vector3 localPos;
