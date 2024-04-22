@@ -16,15 +16,13 @@ public class WorldManager : MonoBehaviour
     public string levelDifficulty;
     public int lives = 3;
     private int counter = 30;
-
-    private float swipeThreshold = 0.5f;
     private bool isChallengeMode = false;
     private bool firstTime = true;
+    private GameObject dupWorld;
 
     public TMPro.TextMeshProUGUI timerText;
     public TMPro.TextMeshProUGUI ObjChangeText;
     public TMPro.TextMeshProUGUI livesText;
-    private GameObject dupWorld;
 
     private void Start()
     {
