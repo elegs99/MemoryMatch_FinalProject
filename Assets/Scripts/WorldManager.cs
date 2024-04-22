@@ -17,6 +17,7 @@ public class WorldManager : MonoBehaviour
     public int lives = 3;
     private int counter = 30;
 
+    private float swipeThreshold = 0.5f;
 
     public TMPro.TextMeshProUGUI timerText;
     public TMPro.TextMeshProUGUI livesText;
@@ -43,8 +44,37 @@ public class WorldManager : MonoBehaviour
             StartCoroutine(nameof(SpawnChallengeMode));
         }
     }
+
+    private void OnEnable()
+    {
+        thumbStick.action.Enable();
+        thumbStick.action.performed += OnThumbstickMoved;
+    }
+
+    private void OnDisable()
+    {
+        thumbStick.action.performed -= OnThumbstickMoved;
+        thumbStick.action.Disable();
+    }
+
+
+    private void OnThumbstickMoved(InputAction.CallbackContext context)
+    {
+        Vector2 thumbstickPosition = context.ReadValue<Vector2>();
+
+        if (thumbstickPosition.x > swipeThreshold)
+        {
+            Debug.Log("right swipe");
+        }
+
+        else if (thumbstickPosition.x < -swipeThreshold)
+        {
+            Debug.Log("left swipe");
+        }
+    }
+
     private void Update() {
-        Debug.Log(thumbStick.action.ReadValue<Vector2>());
+        // Debug.Log(thumbStick.action.ReadValue<Vector2>());
         if(lives == 0)
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");

@@ -18,7 +18,7 @@
                     "name": "ChangeScene",
                     "type": "Value",
                     "id": "86d36a15-1937-4789-8f92-b40fa109f6e3",
-                    "expectedControlType": "Axis",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -39,7 +39,18 @@
                 {
                     "name": "",
                     "id": "79546d25-7a64-4bd9-a0bf-4b95e2512140",
-                    "path": "<XRController>{LeftHand}/{PrimaryAxis}",
+                    "path": "<XRController>{LeftHand}/thumbstick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangeScene",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "03215a58-186c-4175-b854-2e43ce784289",
+                    "path": "<XRController>{RightHand}/thumbstick",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
