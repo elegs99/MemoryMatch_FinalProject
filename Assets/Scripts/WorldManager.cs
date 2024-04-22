@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class WorldManager : MonoBehaviour
 {
     private List<GameObject> changedObjects = new();
     public GameObject world;
     public ObjectSelection scriptRefSelectL, scriptRefSelectR;
+    public InputActionReference thumbStick;
     public GodMovement scripRefMovement;
 
     public string levelDifficulty;
@@ -40,7 +42,9 @@ public class WorldManager : MonoBehaviour
             StartCoroutine(nameof(SpawnChallengeMode));
         }
     }
-
+    private void Update() {
+        Debug.Log(thumbStick.action.ReadValue<Vector2>());
+    }
     IEnumerator SpawnChallengeMode()
     {
         GameObject dupWorld = Instantiate(world, world.transform.position, world.transform.rotation);
