@@ -36,12 +36,12 @@ public class ObjectSelection : MonoBehaviour
 
             HashSet<GameObject> currentObjects = HighlightObjects(); // Return gameobjects in radius
             if (distance < minDistance && currentObjects.Count == 1) { // Check if selection made
-                Debug.Log(currentObjects.ElementAt(0)); // UPDATE THIS return selection check if right or wrong change score
                 GameObject found = changedObjects.FirstOrDefault(x => x == currentObjects.ElementAt(0));
                 WorldManager worldManager = GameObject.Find("XR Origin (XR Rig)").GetComponent<WorldManager>();
-
                 if (found != null)
                 {
+                    Debug.Log(found.name);
+
                     changedObjects.Remove(found);
                     worldManager.RemoveChangedObject(found);
                 }

@@ -37,16 +37,15 @@ public class WorldManager : MonoBehaviour
         }
         else if (levelDifficulty.ToLower() == "challenge")
         {
-            // Handle hard difficulty
-            // 30 second timer to look at original world
-            // Then show duplicate world
-            Debug.Log("In challenge mode");
             StartCoroutine(nameof(SpawnChallengeMode));
         }
     }
 
     IEnumerator SpawnChallengeMode()
     {
+        GameObject dupWorld = Instantiate(world, world.transform.position, world.transform.rotation);
+        scripRefMovement.setCloneWorld(dupWorld);
+        dupWorld.SetActive(false);
         while (counter > 0)
         {
             timerText.text = $"Time until swap: {counter}";
@@ -54,10 +53,9 @@ public class WorldManager : MonoBehaviour
             yield return new WaitForSeconds(1);
         }
 
-        GameObject dupWorld = Instantiate(world, world.transform.position, world.transform.rotation);
-        scripRefMovement.setCloneWorld(dupWorld);
 
         world.SetActive(false);
+        dupWorld.SetActive(true);
 
         foreach (Transform child in dupWorld.transform)
         {
@@ -84,6 +82,7 @@ public class WorldManager : MonoBehaviour
     public void RemoveChangedObject(GameObject obj)
     {
         changedObjects.Remove(obj);
+        Destroy(obj);
     }
 
     public int GetChangedObjectCount()
@@ -96,11 +95,11 @@ public class WorldManager : MonoBehaviour
     public void RemoveLife()
     {
         lives--;
+        livesText.text = $"Lives: {lives}";
         if (lives == 0)
         {
             // Game over
             return;
         }
-        livesText.text = $"Lives: {lives}";
     }
 }
