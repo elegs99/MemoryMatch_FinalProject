@@ -43,16 +43,15 @@ public class ObjectSelection : MonoBehaviour
             WorldManager worldManager = GameObject.Find("XR Origin (XR Rig)").GetComponent<WorldManager>();
             if (found != null)
             {
-                Debug.Log(found.name);
-                originalMaterials.Remove(found);
                 found.gameObject.tag = "Finish";
+
                 found.TryGetComponent<MeshRenderer>(out var meshRenderer);
                 originalMaterials[found] = meshRenderer.material;
                 meshRenderer.material = selectedHighlight;
+
+                originalMaterials.Remove(found);
                 worldManager.RemoveChangedObject(found);
-            }
-            else
-            {
+            } else {
                 worldManager.RemoveLife();
             }
         }
