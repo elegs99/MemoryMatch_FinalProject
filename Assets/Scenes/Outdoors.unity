@@ -748,6 +748,7 @@ MonoBehaviour:
   world: {fileID: 659007505}
   scriptRefSelectL: {fileID: 1981556242}
   scriptRefSelectR: {fileID: 2069979550}
+  thumbStick: {fileID: -4977728619718040996, guid: 4009733ab1fa2ed49b06a5b01e7b7935, type: 3}
   scripRefMovement: {fileID: 691460912}
   levelDifficulty: challenge
   lives: 3
@@ -2006,7 +2007,7 @@ MonoBehaviour:
   posThumb: {fileID: 1813033657}
   posPointer: {fileID: 9639771}
   triggerVal: {fileID: -4289430672226363583, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  selectItemButton: {fileID: 8754798727640781753, guid: 4009733ab1fa2ed49b06a5b01e7b7935, type: 3}
+  selectItemButton: {fileID: -8270564778575511633, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   selectHighlight: {fileID: 2100000, guid: bea5b764171f3d84580d705c5c8ec5b4, type: 2}
   selectionSphere: {fileID: 1799003029}
 --- !u!1 &2069979547
