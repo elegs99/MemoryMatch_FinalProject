@@ -18,14 +18,17 @@ public class WorldManager : MonoBehaviour
     private int counter = 30;
 
     private float swipeThreshold = 0.5f;
+    private bool isChallengeMode = false;
+    private bool firstTime = true;
 
     public TMPro.TextMeshProUGUI timerText;
+    public TMPro.TextMeshProUGUI ObjChangeText;
     public TMPro.TextMeshProUGUI livesText;
+    private GameObject dupWorld;
 
     private void Start()
     {
         // levelDifficulty = StateNameController.difficulty;
-
         foreach (Transform child in world.transform)
         {
             if (child.name.Contains("Face"))
@@ -41,7 +44,8 @@ public class WorldManager : MonoBehaviour
         }
         else if (levelDifficulty.ToLower() == "challenge")
         {
-            StartCoroutine(nameof(SpawnChallengeMode));
+            isChallengeMode = true;
+            SpawnChallengeMode();
         }
     }
 
@@ -62,14 +66,25 @@ public class WorldManager : MonoBehaviour
     {
         Vector2 thumbstickPosition = context.ReadValue<Vector2>();
 
-        if (thumbstickPosition.x > swipeThreshold)
+        if (thumbstickPosition.x > .9f && dupWorld != null)
         {
             Debug.Log("right swipe");
+            world.SetActive(false);
+            dupWorld.SetActive(true);
+            if (isChallengeMode && firstTime) {
+                firstTime = false;
+                StartCoroutine(nameof(StartChallengeTimer));
+                timerText.enabled = true;
+                ObjChangeText.enabled = true;
+                livesText.enabled = true;
+            }
         }
 
-        else if (thumbstickPosition.x < -swipeThreshold)
+        else if (thumbstickPosition.x < -.9f && dupWorld != null && !isChallengeMode)
         {
             Debug.Log("left swipe");
+            world.SetActive(true);
+            dupWorld.SetActive(false);
         }
     }
 
@@ -81,22 +96,19 @@ public class WorldManager : MonoBehaviour
             return;
         }
     }
-
-    IEnumerator SpawnChallengeMode()
-    {
-        GameObject dupWorld = Instantiate(world, world.transform.position, world.transform.rotation);
-        scripRefMovement.setCloneWorld(dupWorld);
-        dupWorld.SetActive(false);
-        while (counter > 0)
+    IEnumerator StartChallengeTimer() {
+        while (counter >= 0)
         {
-            timerText.text = $"Time until swap: {counter}";
+            timerText.text = $"Time Left: {counter}";
             counter--;
             yield return new WaitForSeconds(1);
         }
-
-
-        world.SetActive(false);
-        dupWorld.SetActive(true);
+    }
+    public void SpawnChallengeMode()
+    {
+        dupWorld = Instantiate(world, world.transform.position, world.transform.rotation);
+        scripRefMovement.setCloneWorld(dupWorld);
+        dupWorld.SetActive(false);
 
         foreach (Transform child in dupWorld.transform)
         {
@@ -112,7 +124,7 @@ public class WorldManager : MonoBehaviour
             }
         }
 
-        timerText.text = $"Objects changed in scene: {changedObjects.Count}";
+        ObjChangeText.text = $"# of Objects Changed: {changedObjects.Count}";
     }
 
     public void AddChangedObject(GameObject obj)
