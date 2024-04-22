@@ -178,6 +178,23 @@ public class LowPolyTerrainGenerator : MonoBehaviour
                 return null;
         }
     }
+    private BiomeType GetRandomBiome(BiomeType currentBiome)
+    {
+        int rand = Random.Range(1,5);
+        switch (rand)
+        {
+            case 1:
+                return BiomeType.Beach;
+            case 2:
+                return BiomeType.Desert;
+            case 3:
+                return BiomeType.Forest;
+            case 4:
+                return BiomeType.Farm;
+            default:
+                return BiomeType.Farm;
+        }
+    }
 
     public void ChangeBiomeAssets()
     {
@@ -230,6 +247,12 @@ public class LowPolyTerrainGenerator : MonoBehaviour
                 worldManager.AddChangedObject(changedObject);
                 break;
             case 2: // ENTIRE OBJECT
+                BiomeType currentBiome = selectedBiome;
+                BiomeType newRandomBiome;
+                do {
+                    newRandomBiome = GetRandomBiome(currentBiome);
+                }while (newRandomBiome != currentBiome);
+                selectedBiome = newRandomBiome;
                 changedObject = Instantiate(GetSelectedBiomePrefabs().assets[Random.Range(0, GetSelectedBiomePrefabs().assets.Count)], randomObject.transform.position, randomObject.transform.rotation, randomObject.transform.parent);
                 changedObject.name = "CHANGEDOBJECT" + randomObject.name;
                 changedObject.gameObject.tag = "prop";
