@@ -12,10 +12,11 @@ public class WorldManager : MonoBehaviour
     public ObjectSelection scriptRefSelectL, scriptRefSelectR;
     public InputActionReference thumbStick;
     public GodMovement scripRefMovement;
+    public IconUIController iconUIController;
 
     public string levelDifficulty;
     public int lives = 3;
-    private int counter = 30;
+    private int counter = 45;
     private bool isChallengeMode = false;
     private bool firstTime = true;
     private GameObject dupWorld;
@@ -66,7 +67,7 @@ public class WorldManager : MonoBehaviour
 
         if (thumbstickPosition.x > .9f && dupWorld != null)
         {
-            Debug.Log("right swipe");
+            //Debug.Log("right swipe");
             world.SetActive(false);
             dupWorld.SetActive(true);
             if (isChallengeMode && firstTime) {
@@ -75,12 +76,14 @@ public class WorldManager : MonoBehaviour
                 timerText.enabled = true;
                 ObjChangeText.enabled = true;
                 livesText.enabled = true;
+                scriptRefSelectL.StartSelection();
+                scriptRefSelectR.StartSelection();
             }
         }
 
         else if (thumbstickPosition.x < -.9f && dupWorld != null && !isChallengeMode)
         {
-            Debug.Log("left swipe");
+            //Debug.Log("left swipe");
             world.SetActive(true);
             dupWorld.SetActive(false);
         }
@@ -122,7 +125,8 @@ public class WorldManager : MonoBehaviour
             }
         }
 
-        ObjChangeText.text = $"# of Objects Changed: {changedObjects.Count}";
+        ObjChangeText.text = $"Objects Changed: {changedObjects.Count}";
+        iconUIController.SetSearchIcons(changedObjects.Count);
     }
 
     public void AddChangedObject(GameObject obj)
@@ -134,6 +138,9 @@ public class WorldManager : MonoBehaviour
     {
         changedObjects.Remove(obj);
         GetChangedObjectCount();
+    }
+    public void updateFoundObjectUI() {
+        iconUIController.SetFoundObj();
     }
 
     public int GetChangedObjectCount()
@@ -147,6 +154,7 @@ public class WorldManager : MonoBehaviour
     {
         lives--;
         livesText.text = $"Lives: {lives}";
+        iconUIController.RemoveLife();
         if (lives == 0)
         {
             // Game over

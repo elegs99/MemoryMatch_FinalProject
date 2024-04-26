@@ -12,10 +12,13 @@ public class ObjectSelection : MonoBehaviour
     public InputActionReference selectItemButton;
     public Material selectHighlight;
     public Material selectedHighlight;
+    public Material wrongHighlight;
+
     public GameObject selectionSphere;
     List<GameObject> changedObjects = new List<GameObject>();
     Dictionary<GameObject, Material> originalMaterials = new Dictionary<GameObject, Material>();
     List<GameObject> currentObjects = new List<GameObject>();
+    bool searchStateEnded = false;
     void Start() {
         if (selectionSphere != null) {
             selectionSphere.SetActive(false); // Initially disable the sphere
@@ -39,19 +42,21 @@ public class ObjectSelection : MonoBehaviour
 
         if (distance < minDistance && currentObjects.Count == 1)
         {
-            GameObject found = changedObjects.FirstOrDefault(x => x == currentObjects.ElementAt(0));
+            GameObject currSelection = currentObjects.ElementAt(0);
+            GameObject found = changedObjects.FirstOrDefault(x => x == currSelection);
             WorldManager worldManager = GameObject.Find("XR Origin (XR Rig)").GetComponent<WorldManager>();
             if (found != null)
             {
                 found.gameObject.tag = "Finish";
-
                 found.TryGetComponent<MeshRenderer>(out var meshRenderer);
-                originalMaterials[found] = meshRenderer.material;
-                meshRenderer.material = selectedHighlight;
-
                 originalMaterials.Remove(found);
-                worldManager.RemoveChangedObject(found);
+                meshRenderer.material = selectedHighlight;
+                worldManager.updateFoundObjectUI();
             } else {
+                currSelection.gameObject.tag = "Finish";
+                Debug.Log(currSelection.TryGetComponent<MeshRenderer>(out var meshRenderer));
+                originalMaterials.Remove(currSelection);
+                meshRenderer.material = wrongHighlight;
                 worldManager.RemoveLife();
             }
         }
@@ -68,11 +73,10 @@ public class ObjectSelection : MonoBehaviour
         float minDistance = .005f;
         float maxDistance = .065f;
 
-        if (distance < maxDistance && triggerValue > .1) {
+        if (searchStateEnded && distance < maxDistance && triggerValue > .1) {
             selectionSphere.SetActive(true);
             float scale = Mathf.Lerp(.03f, .1f, (distance - minDistance) / (maxDistance - minDistance));
             selectionSphere.transform.localScale = new Vector3(scale, scale, scale);
-
             HighlightObjects();
         } else {
             selectionSphere.SetActive(false);
@@ -128,5 +132,8 @@ public class ObjectSelection : MonoBehaviour
 
     public void SetChangedObjectList(List<GameObject> newObjects) {
         changedObjects = newObjects;
+    }
+    public void StartSelection() {
+        searchStateEnded = true;
     }
 }
