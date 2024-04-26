@@ -22,8 +22,6 @@ public class WorldManager : MonoBehaviour
     private GameObject dupWorld;
 
     public TMPro.TextMeshProUGUI timerText;
-    public TMPro.TextMeshProUGUI ObjChangeText;
-    public TMPro.TextMeshProUGUI livesText;
 
     private void Start()
     {
@@ -71,11 +69,9 @@ public class WorldManager : MonoBehaviour
             world.SetActive(false);
             dupWorld.SetActive(true);
             if (isChallengeMode && firstTime) {
+                iconUIController.SetSearchIcons(changedObjects.Count);
                 firstTime = false;
                 StartCoroutine(nameof(StartChallengeTimer));
-                timerText.enabled = true;
-                ObjChangeText.enabled = true;
-                livesText.enabled = true;
                 scriptRefSelectL.StartSelection();
                 scriptRefSelectR.StartSelection();
             }
@@ -86,15 +82,6 @@ public class WorldManager : MonoBehaviour
             //Debug.Log("left swipe");
             world.SetActive(true);
             dupWorld.SetActive(false);
-        }
-    }
-
-    private void Update() {
-        // Debug.Log(thumbStick.action.ReadValue<Vector2>());
-        if(lives == 0)
-        {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
-            return;
         }
     }
     IEnumerator StartChallengeTimer() {
@@ -124,9 +111,6 @@ public class WorldManager : MonoBehaviour
                 dupWorldTerrainGen.ChangeBiomeAssets();
             }
         }
-
-        ObjChangeText.text = $"Objects Changed: {changedObjects.Count}";
-        iconUIController.SetSearchIcons(changedObjects.Count);
     }
 
     public void AddChangedObject(GameObject obj)
@@ -153,11 +137,10 @@ public class WorldManager : MonoBehaviour
     public void RemoveLife()
     {
         lives--;
-        livesText.text = $"Lives: {lives}";
         iconUIController.RemoveLife();
         if (lives == 0)
         {
-            // Game over
+            UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
             return;
         }
     }
