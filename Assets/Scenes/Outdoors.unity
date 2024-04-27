@@ -918,7 +918,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &607555612
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1096,9 +1096,8 @@ MonoBehaviour:
   iconUIController: {fileID: 758026981}
   levelDifficulty: challenge
   lives: 3
+  isChallengeMode: 0
   timerText: {fileID: 2131494100}
-  ObjChangeText: {fileID: 27121718}
-  livesText: {fileID: 2118659446}
 --- !u!1 &758026975
 GameObject:
   m_ObjectHideFlags: 0
@@ -1442,7 +1441,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &890840430
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3556,7 +3555,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &2098754763
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4064,7 +4063,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Swipe Right To Start Timer
+  m_text: Swipe Right To Start Game
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

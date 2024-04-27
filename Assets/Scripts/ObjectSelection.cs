@@ -47,17 +47,19 @@ public class ObjectSelection : MonoBehaviour
             WorldManager worldManager = GameObject.Find("XR Origin (XR Rig)").GetComponent<WorldManager>();
             if (found != null)
             {
+                // Selected object in changed list
                 found.gameObject.tag = "Finish";
                 found.TryGetComponent<MeshRenderer>(out var meshRenderer);
                 originalMaterials.Remove(found);
                 meshRenderer.material = selectedHighlight;
                 worldManager.updateFoundObjectUI();
             } else {
+                // Selected unchanged object
                 currSelection.gameObject.tag = "Finish";
                 Debug.Log(currSelection.TryGetComponent<MeshRenderer>(out var meshRenderer));
                 originalMaterials.Remove(currSelection);
                 meshRenderer.material = wrongHighlight;
-                worldManager.RemoveLife();
+                if (worldManager.isChallengeMode) worldManager.RemoveLife();
             }
         }
     }
@@ -135,5 +137,8 @@ public class ObjectSelection : MonoBehaviour
     }
     public void StartSelection() {
         searchStateEnded = true;
+    }
+    public void StopSelection() {
+        searchStateEnded = false;
     }
 }
