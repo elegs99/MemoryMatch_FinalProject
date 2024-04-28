@@ -562,7 +562,6 @@ GameObject:
   m_Component:
   - component: {fileID: 221238650}
   - component: {fileID: 221238651}
-  - component: {fileID: 221238649}
   m_Layer: 0
   m_Name: Right Controller
   m_TagString: Untagged
@@ -570,25 +569,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &221238649
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 221238648}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d98a2d9dd8af9fa4e812ac6410c8cc51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  posThumb: {fileID: 847537236}
-  posPointer: {fileID: 847537235}
-  triggerVal: {fileID: -5908353012961274365, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  selectItemButton: {fileID: 0}
-  selectHighlight: {fileID: 2100000, guid: bea5b764171f3d84580d705c5c8ec5b4, type: 2}
-  selectedHighlight: {fileID: 0}
-  selectionSphere: {fileID: 0}
 --- !u!4 &221238650
 Transform:
   m_ObjectHideFlags: 0
@@ -1931,16 +1911,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5686134208185136530, guid: 1fd3a7c43c8190f4d8c167ebde694364, type: 3}
   m_PrefabInstance: {fileID: 847537233}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &847537235 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5686134208185136552, guid: 1fd3a7c43c8190f4d8c167ebde694364, type: 3}
-  m_PrefabInstance: {fileID: 847537233}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &847537236 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5686134208185136522, guid: 1fd3a7c43c8190f4d8c167ebde694364, type: 3}
-  m_PrefabInstance: {fileID: 847537233}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &938449963
 GameObject:
   m_ObjectHideFlags: 0
@@ -3021,7 +2991,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: right
+          m_StringArgument: left
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1265399509
@@ -3686,7 +3656,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1748791052}
   - component: {fileID: 1748791053}
-  - component: {fileID: 1748791054}
   m_Layer: 0
   m_Name: Left Controller
   m_TagString: Untagged
@@ -3937,25 +3906,6 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: -1636515391019944688, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   m_ButtonPressPoint: 0.5
---- !u!114 &1748791054
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1748791051}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d98a2d9dd8af9fa4e812ac6410c8cc51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  posThumb: {fileID: 1865572996}
-  posPointer: {fileID: 1865572997}
-  triggerVal: {fileID: -4289430672226363583, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  selectItemButton: {fileID: 0}
-  selectHighlight: {fileID: 2100000, guid: bea5b764171f3d84580d705c5c8ec5b4, type: 2}
-  selectedHighlight: {fileID: 0}
-  selectionSphere: {fileID: 0}
 --- !u!1001 &1776953333
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4249,16 +4199,6 @@ PrefabInstance:
 --- !u!4 &1865572995 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 109434732395451517, guid: 65847589f926b734d9eaed6e25f0046b, type: 3}
-  m_PrefabInstance: {fileID: 1865572994}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1865572996 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 109434732395451493, guid: 65847589f926b734d9eaed6e25f0046b, type: 3}
-  m_PrefabInstance: {fileID: 1865572994}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1865572997 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 109434732395451463, guid: 65847589f926b734d9eaed6e25f0046b, type: 3}
   m_PrefabInstance: {fileID: 1865572994}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2110508564
