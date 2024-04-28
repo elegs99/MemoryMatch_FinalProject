@@ -12,21 +12,20 @@ public class WorldManager : MonoBehaviour
     public ObjectSelection scriptRefSelectL, scriptRefSelectR;
     public InputActionReference thumbStick;
     public GodMovement scripRefMovement;
+    public IconUIController iconUIController;
 
     public string levelDifficulty;
     public int lives = 3;
-    private int counter = 30;
-    private bool isChallengeMode = false;
+    private int counter = 45;
+    public bool isChallengeMode = false;
     private bool firstTime = true;
     private GameObject dupWorld;
 
     public TMPro.TextMeshProUGUI timerText;
-    public TMPro.TextMeshProUGUI ObjChangeText;
-    public TMPro.TextMeshProUGUI livesText;
 
     private void Start()
     {
-        // levelDifficulty = StateNameController.difficulty;
+        levelDifficulty = StateNameController.difficulty;
         foreach (Transform child in world.transform)
         {
             if (child.name.Contains("Face"))
@@ -36,8 +35,7 @@ public class WorldManager : MonoBehaviour
         }
         if (levelDifficulty.ToLower() == "normal")
         {
-            // Handle normal difficulty
-            // Show original world by default
+            SpawnCasualMode();
 
         }
         else if (levelDifficulty.ToLower() == "challenge")
@@ -66,32 +64,27 @@ public class WorldManager : MonoBehaviour
 
         if (thumbstickPosition.x > .9f && dupWorld != null)
         {
-            Debug.Log("right swipe");
+            //Debug.Log("right swipe");
             world.SetActive(false);
             dupWorld.SetActive(true);
+            scriptRefSelectL.StartSelection();
+            scriptRefSelectR.StartSelection();
             if (isChallengeMode && firstTime) {
+                iconUIController.SetSearchIcons(changedObjects.Count);
+                iconUIController.ShowLivesUI();
                 firstTime = false;
                 StartCoroutine(nameof(StartChallengeTimer));
-                timerText.enabled = true;
-                ObjChangeText.enabled = true;
-                livesText.enabled = true;
-            }
-        }
-
-        else if (thumbstickPosition.x < -.9f && dupWorld != null && !isChallengeMode)
-        {
-            Debug.Log("left swipe");
+            } else if (firstTime) {
+                iconUIController.SetSearchIcons(changedObjects.Count);
+                firstTime = false;
+                timerText.enabled = false;
+            } 
+        } else if (thumbstickPosition.x < -.9f && dupWorld != null && !isChallengeMode) {
+            //Debug.Log("left swipe");
             world.SetActive(true);
             dupWorld.SetActive(false);
-        }
-    }
-
-    private void Update() {
-        // Debug.Log(thumbStick.action.ReadValue<Vector2>());
-        if(lives == 0)
-        {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
-            return;
+            scriptRefSelectL.StopSelection();
+            scriptRefSelectR.StopSelection();
         }
         if (changedObjects.Count == 0)
         {
@@ -132,8 +125,26 @@ public class WorldManager : MonoBehaviour
                 dupWorldTerrainGen.ChangeBiomeAssets();
             }
         }
+    }
+    public void SpawnCasualMode()
+    {
+        dupWorld = Instantiate(world, world.transform.position, world.transform.rotation);
+        scripRefMovement.setCloneWorld(dupWorld);
+        dupWorld.SetActive(false);
 
-        ObjChangeText.text = $"# of Objects Changed: {changedObjects.Count}";
+        foreach (Transform child in dupWorld.transform)
+        {
+            if (child.name.Contains("Face"))
+            {
+                LowPolyTerrainGenerator dupWorldTerrainGen = child.GetComponent<LowPolyTerrainGenerator>();
+                foreach (Transform transform in child)
+                {
+                    dupWorldTerrainGen.placedObjects.Add(transform.gameObject);
+                }
+                dupWorldTerrainGen.worldManager = this;
+                dupWorldTerrainGen.ChangeBiomeAssets();
+            }
+        }
     }
 
     public void AddChangedObject(GameObject obj)
@@ -146,6 +157,9 @@ public class WorldManager : MonoBehaviour
         changedObjects.Remove(obj);
         GetChangedObjectCount();
     }
+    public void updateFoundObjectUI() {
+        iconUIController.SetFoundObj();
+    }
 
     public int GetChangedObjectCount()
     {
@@ -157,10 +171,10 @@ public class WorldManager : MonoBehaviour
     public void RemoveLife()
     {
         lives--;
-        livesText.text = $"Lives: {lives}";
+        iconUIController.RemoveLife();
         if (lives == 0)
         {
-            // Game over
+            UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
             return;
         }
     }
