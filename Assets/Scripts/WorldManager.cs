@@ -54,14 +54,16 @@ public class WorldManager : MonoBehaviour
             scriptRefSelectR.StartSelection();
             if (isChallengeMode && firstTime)
             {
-                iconUIController.SetSearchIcons(changedObjects.Count);
+                iconUIController.InstantiateSearchIcons(changedObjects.Count);
+                iconUIController.InstantiateFoundIcons(changedObjects.Count);
                 iconUIController.ShowLivesUI();
                 firstTime = false;
                 StartCoroutine(nameof(StartChallengeTimer));
             }
             else if (firstTime)
             {
-                iconUIController.SetSearchIcons(changedObjects.Count);
+                iconUIController.InstantiateSearchIcons(changedObjects.Count);
+                iconUIController.InstantiateFoundIcons(changedObjects.Count);
                 firstTime = false;
                 timerText.enabled = false;
             }
@@ -94,12 +96,14 @@ public class WorldManager : MonoBehaviour
             scriptRefSelectL.StartSelection();
             scriptRefSelectR.StartSelection();
             if (isChallengeMode && firstTime) {
-                iconUIController.SetSearchIcons(changedObjects.Count);
+                iconUIController.InstantiateSearchIcons(changedObjects.Count);
+                iconUIController.InstantiateFoundIcons(changedObjects.Count);
                 iconUIController.ShowLivesUI();
                 firstTime = false;
                 StartCoroutine(nameof(StartChallengeTimer));
             } else if (firstTime) {
-                iconUIController.SetSearchIcons(changedObjects.Count);
+                iconUIController.InstantiateSearchIcons(changedObjects.Count);
+                iconUIController.InstantiateFoundIcons(changedObjects.Count);
                 firstTime = false;
                 timerText.enabled = false;
             } 
