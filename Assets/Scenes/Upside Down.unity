@@ -8810,7 +8810,7 @@ MonoBehaviour:
   selectItemButton: {fileID: -8270564778575511633, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   selectHighlight: {fileID: 2100000, guid: bea5b764171f3d84580d705c5c8ec5b4, type: 2}
   selectedHighlight: {fileID: 2100000, guid: 879b0d0e90801ea4c8cf261bac50ef0f, type: 2}
-  wrongHighlight: {fileID: 0}
+  wrongHighlight: {fileID: 2100000, guid: fa476e9e3c322474bba4eda70e827c89, type: 2}
   selectionSphere: {fileID: 1799003029}
   changedObjects: []
 --- !u!1 &2011637049
@@ -9229,7 +9229,7 @@ MonoBehaviour:
   selectItemButton: {fileID: 8754798727640781753, guid: 4009733ab1fa2ed49b06a5b01e7b7935, type: 3}
   selectHighlight: {fileID: 2100000, guid: bea5b764171f3d84580d705c5c8ec5b4, type: 2}
   selectedHighlight: {fileID: 2100000, guid: 879b0d0e90801ea4c8cf261bac50ef0f, type: 2}
-  wrongHighlight: {fileID: 0}
+  wrongHighlight: {fileID: 2100000, guid: fa476e9e3c322474bba4eda70e827c89, type: 2}
   selectionSphere: {fileID: 1314127768}
   changedObjects: []
 --- !u!1001 &2114049848
