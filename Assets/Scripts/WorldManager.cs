@@ -147,6 +147,7 @@ public class WorldManager : MonoBehaviour
                 LowPolyTerrainGenerator dupWorldTerrainGen = child.GetComponent<LowPolyTerrainGenerator>();
                 foreach (Transform transform in child)
                 {
+                    Debug.Log($"Adding {transform.gameObject.name} on face {child.name} to placed objects");
                     dupWorldTerrainGen.placedObjects.Add(transform.gameObject);
                 }
                 dupWorldTerrainGen.worldManager = this;

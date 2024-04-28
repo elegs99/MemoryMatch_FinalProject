@@ -243,7 +243,7 @@ public class LowPolyTerrainGenerator : MonoBehaviour
 
         GameObject randomObject = placedObjects[Random.Range(0, placedObjects.Count)];
         GameObject changedObject;
-        int assetChangeType = Random.Range(0, 4);
+        int assetChangeType = Random.Range(0, 3);
 
         Transform terrainTransform = this.transform;
         Vector3 localPos;
