@@ -6,7 +6,9 @@ using UnityEngine;
 
 public class IconUIController : MonoBehaviour
 {
-    public GameObject[] searchIcons, foundIcons, livesIcon;
+    public GameObject[] livesIcon;
+    public List<GameObject> searchIcons = new List<GameObject>();
+    public List<GameObject> foundIcons = new List<GameObject>();
     private int foundIndex = 0;
     private int numChanged;
     private int livesIndex = 2;
@@ -28,7 +30,7 @@ public class IconUIController : MonoBehaviour
             GameObject searchIcon = Instantiate(searchIconPrefab, Vector3.zero, Quaternion.identity, numChangedContainer.transform);
             searchIcon.SetActive(true);
             searchIcon.transform.localPosition = new Vector3(-6.0f + (i * 2.5f), 0, 0);
-            searchIcons.Append(searchIcon);
+            searchIcons.Add(searchIcon);
         }
     }
 
@@ -40,7 +42,7 @@ public class IconUIController : MonoBehaviour
             GameObject foundIcon = Instantiate(foundIconPrefab, Vector3.zero, Quaternion.identity, numFoundContainer.transform);
             foundIcon.SetActive(false);
             foundIcon.transform.localPosition = new Vector3(-6.0f + (i * 2.5f), 0, -0.001f);
-            foundIcons.Append(foundIcon);
+            foundIcons.Add(foundIcon);
         }
     }
 

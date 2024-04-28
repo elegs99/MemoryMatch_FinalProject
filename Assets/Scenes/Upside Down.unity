@@ -290,8 +290,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 143959776}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.6, y: 0.243, z: 2.249}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.4899, y: 0.243, z: 0.059999943}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -306,7 +306,7 @@ Transform:
   - {fileID: 1455884854}
   - {fileID: 944523587}
   - {fileID: 523909608}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 659007509}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &147016948
 GameObject:
@@ -413,6 +413,10 @@ MonoBehaviour:
     - {fileID: 745396237087619192, guid: 73fe462c4b827974ab152cbffb5e242d, type: 3}
     - {fileID: 4079800351694497593, guid: a3d7ffea157492741b66c9cc0dadb83c, type: 3}
     - {fileID: 1269573105918243985, guid: 1be8f6bbd6a98d847a374a214aebf6b5, type: 3}
+  aboveGroundPrefabs:
+    assets: []
+  underGroundPrefabs:
+    assets: []
   placedObjects: []
   selectedBiome: 6
   beachTexture: {fileID: 2800000, guid: 85ed2b41abc7c82499e10ac4feaa0590, type: 3}
@@ -423,6 +427,8 @@ MonoBehaviour:
   kitchenTexture: {fileID: 2800000, guid: c4ab1a97efb99374d9de55287d6d9f67, type: 3}
   livingroomTexture: {fileID: 2800000, guid: e159644736f7fb047a58d9d6b6739f08, type: 3}
   bathroomTexture: {fileID: 2800000, guid: 92f4d9c4277c18e498d265bf3e86e051, type: 3}
+  aboveTexture: {fileID: 0}
+  underTexture: {fileID: 0}
   terrainScale: 10
   heightMultiplier: 0
   edgeBoundary: 1.91
@@ -5433,12 +5439,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 393456124}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.112, y: -0.084, z: 2.317}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0.0018999726, y: -0.084, z: 0.12799978}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 659007509}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1 &421101112
 GameObject:
@@ -6101,12 +6107,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8901c45062f83d94d98aad22fa1deedc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  searchIcons: []
-  foundIcons: []
   livesIcon:
   - {fileID: 1122890220}
   - {fileID: 1664476067}
   - {fileID: 613837163}
+  searchIcons: []
+  foundIcons: []
   searchIconPrefab: {fileID: 8725424969758199496, guid: a25bed8e3453c4946ac8960c4aaffb95, type: 3}
   foundIconPrefab: {fileID: 5316976429158809503, guid: 2666eed4114319e4897e3f8fa2532da0, type: 3}
 --- !u!1 &757712530
@@ -8806,6 +8812,7 @@ MonoBehaviour:
   selectedHighlight: {fileID: 2100000, guid: 879b0d0e90801ea4c8cf261bac50ef0f, type: 2}
   wrongHighlight: {fileID: 0}
   selectionSphere: {fileID: 1799003029}
+  changedObjects: []
 --- !u!1 &2011637049
 GameObject:
   m_ObjectHideFlags: 0
@@ -9224,6 +9231,7 @@ MonoBehaviour:
   selectedHighlight: {fileID: 2100000, guid: 879b0d0e90801ea4c8cf261bac50ef0f, type: 2}
   wrongHighlight: {fileID: 0}
   selectionSphere: {fileID: 1314127768}
+  changedObjects: []
 --- !u!1001 &2114049848
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9575,6 +9583,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7759603130717421315, guid: 03cb4a2bc1e06944093e4f07b0a494c2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 147016949}
+    - targetCorrespondingSourceObject: {fileID: 7759603130717421315, guid: 03cb4a2bc1e06944093e4f07b0a494c2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 143959777}
+    - targetCorrespondingSourceObject: {fileID: 7759603130717421315, guid: 03cb4a2bc1e06944093e4f07b0a494c2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 393456127}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03cb4a2bc1e06944093e4f07b0a494c2, type: 3}
 --- !u!23 &15045261027009301
@@ -12612,6 +12626,4 @@ SceneRoots:
   - {fileID: 2114049848}
   - {fileID: 1068159712}
   - {fileID: 933925967}
-  - {fileID: 143959777}
-  - {fileID: 393456127}
   - {fileID: 783888799}

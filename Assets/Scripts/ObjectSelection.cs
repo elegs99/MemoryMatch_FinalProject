@@ -15,7 +15,7 @@ public class ObjectSelection : MonoBehaviour
     public Material wrongHighlight;
 
     public GameObject selectionSphere;
-    List<GameObject> changedObjects = new List<GameObject>();
+    public List<GameObject> changedObjects = new List<GameObject>();
     Dictionary<GameObject, Material> originalMaterials = new Dictionary<GameObject, Material>();
     List<GameObject> currentObjects = new List<GameObject>();
     bool searchStateEnded = false;
