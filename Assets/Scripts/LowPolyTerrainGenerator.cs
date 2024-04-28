@@ -251,10 +251,10 @@ public class LowPolyTerrainGenerator : MonoBehaviour
         switch (assetChangeType)
         {
             case 0: // SCALE
-                changedObject = randomObject;
+                Debug.Log("CHANGING SCALE OF OBJECT " + randomObject.name);
+                changedObject = Instantiate(randomObject, randomObject.transform.position, randomObject.transform.rotation, randomObject.transform.parent);
                 float scale = Random.Range(0.5f, 2.0f);
-                Vector3 currentScale = changedObject.transform.localScale;
-                changedObject.transform.localScale = new Vector3(currentScale.x * scale, currentScale.y * scale, currentScale.z * scale);
+                changedObject.transform.localScale = new Vector3(scale, scale, scale);
 
                 localPos = changedObject.transform.position;
                 worldPos = terrainTransform.TransformPoint(localPos) + planeNormal * 5;
@@ -265,11 +265,12 @@ public class LowPolyTerrainGenerator : MonoBehaviour
                     changedObject.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
                 }
 
-                changedObject.name = "CHANGEDSCALE" + randomObject.name;
-                changedObject.gameObject.tag = "prop";
                 worldManager.AddChangedObject(changedObject);
+                changedObject.name = "CHANGEDSCALE" + randomObject.name;
+                changedObject.tag = "prop";
                 break;
             case 1: // COLOR
+                Debug.Log("CHANGING COLOR OF OBJECT " + randomObject.name);
                 changedObject = Instantiate(randomObject, randomObject.transform.position, randomObject.transform.rotation, randomObject.transform.parent);
 
                 Material material = changedObject.GetComponent<MeshRenderer>().material;
@@ -283,6 +284,7 @@ public class LowPolyTerrainGenerator : MonoBehaviour
                 worldManager.AddChangedObject(changedObject);
                 break;
             case 2: // ENTIRE OBJECT
+                Debug.Log("CHANGING ENTIRE OBJECT " + randomObject.name);
                 BiomeType currentBiome = selectedBiome;
                 BiomeType newRandomBiome;
                 do {

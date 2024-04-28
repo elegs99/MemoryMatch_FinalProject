@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Net;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Windows;
@@ -25,7 +24,7 @@ public class WorldManager : MonoBehaviour
 
     private void Start()
     {
-        levelDifficulty = StateNameController.difficulty;
+        levelDifficulty = StateNameController.difficulty ?? "normal";
         foreach (Transform child in world.transform)
         {
             if (child.name.Contains("Face"))
@@ -43,6 +42,31 @@ public class WorldManager : MonoBehaviour
             isChallengeMode = true;
             SpawnChallengeMode();
         }
+    }
+
+    private void Update()
+    {
+        if (UnityEngine.Input.GetMouseButton(0))
+        {
+            world.SetActive(false);
+            dupWorld.SetActive(true);
+            scriptRefSelectL.StartSelection();
+            scriptRefSelectR.StartSelection();
+            if (isChallengeMode && firstTime)
+            {
+                iconUIController.SetSearchIcons(changedObjects.Count);
+                iconUIController.ShowLivesUI();
+                firstTime = false;
+                StartCoroutine(nameof(StartChallengeTimer));
+            }
+            else if (firstTime)
+            {
+                iconUIController.SetSearchIcons(changedObjects.Count);
+                firstTime = false;
+                timerText.enabled = false;
+            }
+        }
+
     }
 
     private void OnEnable()
