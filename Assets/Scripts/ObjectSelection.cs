@@ -56,7 +56,7 @@ public class ObjectSelection : MonoBehaviour
             } else {
                 // Selected unchanged object
                 currSelection.gameObject.tag = "Finish";
-                Debug.Log(currSelection.TryGetComponent<MeshRenderer>(out var meshRenderer));
+                currSelection.TryGetComponent<MeshRenderer>(out var meshRenderer);
                 originalMaterials.Remove(currSelection);
                 meshRenderer.material = wrongHighlight;
                 if (worldManager.isChallengeMode) worldManager.RemoveLife();

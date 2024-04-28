@@ -279,7 +279,7 @@ public class LowPolyTerrainGenerator : MonoBehaviour
                 Debug.Log("CHANGING SCALE OF OBJECT " + randomObject.name);
                 changedObject = Instantiate(randomObject, randomObject.transform.position, randomObject.transform.rotation, randomObject.transform.parent);
                 float scale = Random.Range(0.5f, 2.0f);
-                changedObject.transform.localScale = new Vector3(scale, scale, scale);
+                changedObject.transform.localScale *= scale;
 
                 localPos = changedObject.transform.position;
                 worldPos = terrainTransform.TransformPoint(localPos) + planeNormal * 5;
