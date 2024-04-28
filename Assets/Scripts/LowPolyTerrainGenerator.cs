@@ -239,7 +239,7 @@ public class LowPolyTerrainGenerator : MonoBehaviour
     }
     private BiomeType GetRandomBiome(BiomeType currentBiome)
     {
-        int rand = Random.Range(1,5);
+        int rand = Random.Range(1,6);
         switch (rand)
         {
             case 1:
@@ -251,7 +251,7 @@ public class LowPolyTerrainGenerator : MonoBehaviour
             case 4:
                 return BiomeType.Farm;
             case 5:
-                return BiomeType.Bedroom;
+                return BiomeType.Under;
             default:
                 return BiomeType.Farm;
         }
