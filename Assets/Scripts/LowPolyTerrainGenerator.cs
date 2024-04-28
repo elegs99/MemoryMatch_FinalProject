@@ -14,14 +14,22 @@ public class LowPolyTerrainGenerator : MonoBehaviour
 
     public int assetCount = 10;
 
+    // Outdoors
     public BiomePrefabs beachPrefabs;
     public BiomePrefabs desertPrefabs;
     public BiomePrefabs forestPrefabs;
     public BiomePrefabs farmPrefabs;
+
+    // Room
     public BiomePrefabs bedroomPrefabs;
     public BiomePrefabs kitchenPrefabs;
     public BiomePrefabs livingroomPrefabs;
     public BiomePrefabs bathroomPrefabs;
+
+    // Mine
+    public BiomePrefabs aboveGroundPrefabs;
+    public BiomePrefabs underGroundPrefabs;
+
 
     public List<GameObject> placedObjects = new List<GameObject>();
 
@@ -34,7 +42,9 @@ public class LowPolyTerrainGenerator : MonoBehaviour
         Bedroom,
         Kitchen,
         Livingroom,
-        Bathroom
+        Bathroom,
+        Above,
+        Under
     }
 
     public BiomeType selectedBiome = BiomeType.Forest;
@@ -47,6 +57,8 @@ public class LowPolyTerrainGenerator : MonoBehaviour
     public Texture2D kitchenTexture;
     public Texture2D livingroomTexture;
     public Texture2D bathroomTexture;
+    public Texture2D aboveTexture;
+    public Texture2D underTexture;
 
 
     public float terrainScale = 5f;
@@ -96,6 +108,12 @@ public class LowPolyTerrainGenerator : MonoBehaviour
                 break;
             case BiomeType.Bathroom:
                 selectedTexture = bathroomTexture;
+                break;
+            case BiomeType.Above:
+                selectedTexture = aboveTexture;
+                break;
+            case BiomeType.Under:
+                selectedTexture = underTexture;
                 break;
         }
 
@@ -180,6 +198,9 @@ public class LowPolyTerrainGenerator : MonoBehaviour
                             GameObject asset = Instantiate(selectedBiomePrefabs.assets[Random.Range(0, selectedBiomePrefabs.assets.Count)], hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal), terrainTransform);
                             placed = true;
                             asset.gameObject.tag = "prop";
+                            foreach (Transform child in asset.transform) {
+                                child.gameObject.tag = "prop";
+                            }
                             placedObjects.Add(asset);
                         }
                     }
@@ -208,6 +229,10 @@ public class LowPolyTerrainGenerator : MonoBehaviour
                 return livingroomPrefabs;
             case BiomeType.Bathroom:
                 return bathroomPrefabs;
+            case BiomeType.Above:
+                return aboveGroundPrefabs;
+            case BiomeType.Under:
+                return underGroundPrefabs;
             default:
                 return null;
         }

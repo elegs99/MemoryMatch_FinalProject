@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5567332905069418717}
   - component: {fileID: 5205039527839469825}
   - component: {fileID: 6211668447894895329}
+  - component: {fileID: 8553628817282356134}
   m_Layer: 0
   m_Name: Object_2
   m_TagString: Untagged
@@ -26,9 +27,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 814958442410088585}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.6883546, y: 0, z: 0, w: 0.72537434}
-  m_LocalPosition: {x: -0.00000003, y: 0.00000006, z: -0.00000244}
-  m_LocalScale: {x: 0.0002, y: 0.0002, z: 0.0002}
+  m_LocalRotation: {x: 0.6883546, y: -0, z: -0, w: 0.72537434}
+  m_LocalPosition: {x: -0.00026741624, y: 0.0005348341, z: -0.021749735}
+  m_LocalScale: {x: 1.7827667, y: 1.7827656, z: 1.7827656}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 4829994609546863654}
@@ -83,6 +84,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8553628817282356134
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 814958442410088585}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4787136918717088048, guid: a773b2963b929264c9db3f950a649f39, type: 3}
 --- !u!1 &8207387635912060962
 GameObject:
   m_ObjectHideFlags: 0
@@ -107,10 +130,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8207387635912060962}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.00000003774895, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.2271, y: 0.5, z: 1.304}
-  m_LocalScale: {x: 8913.834, y: 8913.829, z: 8913.829}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 15, y: 15, z: 15}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5567332905069418717}
   m_Father: {fileID: 0}
