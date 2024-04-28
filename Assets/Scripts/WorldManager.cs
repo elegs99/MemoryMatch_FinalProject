@@ -93,7 +93,18 @@ public class WorldManager : MonoBehaviour
             UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
             return;
         }
+        if (changedObjects.Count == 0)
+        {
+            StartCoroutine(nameof(WinGame));
+        }
     }
+
+    IEnumerator WinGame()
+    {
+        yield return new WaitForSeconds(2);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+    }
+
     IEnumerator StartChallengeTimer() {
         while (counter >= 0)
         {
