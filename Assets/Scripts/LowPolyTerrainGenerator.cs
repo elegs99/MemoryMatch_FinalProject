@@ -297,13 +297,24 @@ public class LowPolyTerrainGenerator : MonoBehaviour
             case 1: // COLOR
                 Debug.Log("CHANGING COLOR OF OBJECT " + randomObject.name);
                 changedObject = Instantiate(randomObject, randomObject.transform.position, randomObject.transform.rotation, randomObject.transform.parent);
-
-                Material material = changedObject.GetComponent<MeshRenderer>().material;
-                material.color = new Color(
-                    Random.Range(0f, 1f),
-                    Random.Range(0f, 1f),
-                    Random.Range(0f, 1f)
-                );
+                if(changedObject.GetComponent<MeshRenderer>() == null)
+                {
+                    Material mat = changedObject.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material;
+                    mat.color = new Color(
+                        Random.Range(0f, 1f),
+                        Random.Range(0f, 1f),
+                        Random.Range(0f, 1f)
+                    );
+                }
+                else
+                {
+                    Material material = changedObject.GetComponent<MeshRenderer>().material;
+                    material.color = new Color(
+                        Random.Range(0f, 1f),
+                        Random.Range(0f, 1f),
+                        Random.Range(0f, 1f)
+                    );
+                }
                 changedObject.name = "CHANGEDCOLOR" + randomObject.name;
                 changedObject.gameObject.tag = "prop";
                 worldManager.AddChangedObject(changedObject);
