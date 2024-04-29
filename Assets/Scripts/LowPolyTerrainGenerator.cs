@@ -330,6 +330,9 @@ public class LowPolyTerrainGenerator : MonoBehaviour
                 changedObject = Instantiate(GetSelectedBiomePrefabs().assets[Random.Range(0, GetSelectedBiomePrefabs().assets.Count)], randomObject.transform.position, randomObject.transform.rotation, randomObject.transform.parent);
                 changedObject.name = "CHANGEDOBJECT" + randomObject.name;
                 changedObject.gameObject.tag = "prop";
+                foreach (Transform child in changedObject.transform) {
+                    child.gameObject.tag = "prop";
+                }
                 localPos = changedObject.transform.position;
                 worldPos = terrainTransform.TransformPoint(localPos) + planeNormal * 5;
                 if (Physics.Raycast(worldPos, -planeNormal * 10, out RaycastHit hit2, 10))
