@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Upside Down.unity
     guid: 6592755be4123cf4ca37124e28526c72
+  - enabled: 1
+    path: Assets/Scenes/Mine Underground.unity
+    guid: a2dab60640163434f8a966dbb5d6810a
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: a53c3723ef4a1104bb978fc246a57264, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 7405d17477e014d4caf23be73213e8c9, type: 2}
