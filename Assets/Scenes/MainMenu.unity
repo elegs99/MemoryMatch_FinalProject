@@ -1184,6 +1184,7 @@ MonoBehaviour:
   - Outdoors
   - House
   - Upside Down
+  - Mine Underground
   leftButton: {fileID: 1265399506}
   rightButton: {fileID: 557148888}
 --- !u!114 &299973048
